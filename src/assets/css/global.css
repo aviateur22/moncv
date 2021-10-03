@@ -1,0 +1,13 @@
+:root{
+    --text_s:0.7rem;
+    --text_xs:0.6rem;
+    --text_xxs:0.5rem;
+    --text_xxxs:0.4rem;
+    --text_l:1.0rem;
+    --test_xl:1.2rem;
+    --text_xxl:1.4rem;
+    --text_xxxl:1.8rem;
+    --text_xxxxl:2.0rem;
+
+    --time1 :.3s
+}
