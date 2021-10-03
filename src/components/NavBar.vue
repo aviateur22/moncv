@@ -71,7 +71,7 @@ export default {
     }
 
     .header__title{
-        font-weight: 800;
+        font-weight: black;
         font-size: var(--text_xxxl);
         padding: 15px 0px;
 
@@ -106,7 +106,7 @@ export default {
     .header__navlink{
         text-transform: uppercase;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: bold;
         color: black;
         font-size: var(--text_xl);
         cursor: pointer;
