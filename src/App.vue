@@ -1,15 +1,26 @@
 <template>
-  <Navigation/>
+  <div class="container">
+    <Navigation/>
+    <MyDescription/>
+    <ProfessionnalExperience/>
+
+  </div>
+  
 </template>
 
 <script>
-import Navigation from './components/NavBar.vue'
+import Navigation from './components/NavBar.vue';
+import MyDescription from './components/MyDescription.vue';
+import ProfessionnalExperience from './components/ProfessionalExcperience.vue'
 
 
 export default {
   name: 'App',
   components: {
-    Navigation
+    Navigation,
+    MyDescription,
+    ProfessionnalExperience
+
   }
 }
 </script>

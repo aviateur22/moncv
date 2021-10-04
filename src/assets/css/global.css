@@ -8,7 +8,27 @@
     --text_xxl:1.4rem;
     --text_xxxl:1.8rem;
     --text_xxxxl:2.0rem;
-    --time1 :.3s
+
+    /* temps de transition */
+    --time1 :.3s;
+
+    /* title color */
+    --title_color : #0057FF;
+
+    /* menu color */
+    --menu_color : #636363;
+
+    /* date color*/
+    --date_color: #898484;
+
+    /* font weight */
+    --text-bold: bold;
+    --text-bolder: bolder;
+
+    /* padding block */
+    --padding_block: 50px 25px;
+
+    --padding_navbar:15px 25px;
 
     
 }

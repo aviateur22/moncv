@@ -22,7 +22,7 @@
 
                 <div class="header_navlink-container">
                     <img class="header_navlink-picture" src="../assets/images/html.png" alt="ma photo">
-                    <h2><a class="header__navlink" href="#me">mon parcours</a></h2>
+                    <h2><a class="header__navlink" href="#MyDescription">mon parcours</a></h2>
                 </div>
                 
                 <div class="header_navlink-container">
@@ -55,7 +55,7 @@ export default {
 <style scoped>
 
     .container{
-        max-width: 880px;
+        padding: var(--padding_navbar);
         margin: 0px auto;
     }
 
@@ -71,9 +71,11 @@ export default {
     }
 
     .header__title{
-        font-weight: black;
-        font-size: var(--text_xxxl);
+        font-weight: var(--text-bolder);
+        font-size: var(--text_xxxl);        
         padding: 15px 0px;
+        text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
+        color: white;
 
     }
 
@@ -107,7 +109,7 @@ export default {
         text-transform: uppercase;
         text-decoration: none;
         font-weight: bold;
-        color: black;
+        color: var(--menu_color);
         font-size: var(--text_xl);
         cursor: pointer;
         transition: all var(--time1) ease-in-out;
