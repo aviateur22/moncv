@@ -22,7 +22,7 @@
 
                 <div class="header_navlink-container">
                     <img class="header_navlink-picture" src="../assets/images/html.png" alt="ma photo">
-                    <h2><a class="header__navlink" href="#MyDescription">mon parcours</a></h2>
+                    <h2><a class="header__navlink" href="#myExperience">mon parcours</a></h2>
                 </div>
                 
                 <div class="header_navlink-container">
