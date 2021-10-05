@@ -10,10 +10,7 @@
 
             <!-- zone de navigation -->
             <section class="header__navigation-container">
-                <div class="header__profile-picture">
-                    <img src="../assets/images/profile.jpg" alt="ma photo">
-                </div>
-
+                
                 <!-- liens de navigation  -->
                  <div class="header_navlink-container">
                     <img class="header_navlink-picture" src="../assets/images/logo.png" alt="ma photo">

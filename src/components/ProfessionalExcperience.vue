@@ -22,6 +22,7 @@
               </header>
               <main class="article__content">
                   <h2 class="article__content-title">reconversion professionnelle</h2>
+                  <h2 class="article__content-date mobile"> aujourd'hui à 2021</h2>
                   <h2 class="article__content-date"></h2>
                   <ul class="article__list">
                       <li><p class="article__list-item">HTML/CSS/Javascript</p></li>
@@ -58,6 +59,9 @@
                         <li><p class="article__list-item">WPF</p></li>
                         <li><p class="article__list-item">JAVASCRIPT</p></li>
                         <li><p class="article__list-item">VUEJS</p></li>
+                        <li><p class="article__list-item">VBA</p></li>
+                        <li><p class="article__list-item">VB</p></li>
+                        <li><p class="article__list-item">G A S</p></li>
                     </ul>                    
               </main>
           </article>
@@ -80,7 +84,7 @@ export default {
     }
 
     .article__content-date{
-        display: inline-block !important;
+       display: block !important;
     }
 
     .article__header{
@@ -111,6 +115,7 @@ export default {
         font-size: var(--text_xxl);
         color: var(--title_color);
         padding: 25px 0px;
+        text-align: center  ;
         
     }    
 
@@ -194,7 +199,7 @@ export default {
         text-transform: uppercase;
         font-weight: var(--text-bolder);
         padding: 20px 5px;
-        display: inline-block;
+        /* display: inline-block; */
     }
 
     .article__content-date{
