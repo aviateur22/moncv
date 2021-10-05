@@ -179,7 +179,7 @@ export default {
     }
 
     .header__navlink:hover{
-          font-size: var(--text_xs);
+        text-shadow: 1px 1px 2px black;
 
     }
 

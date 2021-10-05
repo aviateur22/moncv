@@ -3,6 +3,8 @@
     <Navigation/>
     <MyDescription/>
     <ProfessionnalExperience/>
+    <Techno/>
+    <Contact/>
 
   </div>
   
@@ -12,6 +14,8 @@
 import Navigation from './components/NavBar.vue';
 import MyDescription from './components/MyDescription.vue';
 import ProfessionnalExperience from './components/ProfessionalExcperience.vue'
+import Techno from './components/Techno.vue';
+import Contact from './components/Contact.vue'
 
 
 export default {
@@ -19,7 +23,10 @@ export default {
   components: {
     Navigation,
     MyDescription,
-    ProfessionnalExperience
+    ProfessionnalExperience,
+    Techno,
+    Contact
+
 
   }
 }

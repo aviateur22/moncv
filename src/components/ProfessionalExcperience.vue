@@ -190,7 +190,7 @@ export default {
         border-left: 1px solid;
         top: calc(50% - 10px);
         left: -10px;
-        background: #6666b3;
+        background: var(--title_color);
         transform: rotate(45deg);
         z-index: -1;
     }
