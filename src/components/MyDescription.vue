@@ -1,5 +1,6 @@
 <template>
-  <div id="MyDescription" class="description">
+<div class="main-container">
+  <div id="MyDescription" class="container">
       <section class="description__story">
           <h2 class="description__story-title">a propos de moi</h2>
           <p class="description__story-content">
@@ -8,9 +9,11 @@
       </section>
       <section class="description__profil">
 
-      </section>
-      
+      </section>      
   </div>
+</div>
+   <!--container pour centrer les élémént -->
+
 </template>
 
 <script>
@@ -20,10 +23,15 @@ export default {
 </script>
 
 <style scoped>
-.description{
-    padding: var(--padding_block);
-    background-color: #F6F6F6;
+
+.main-container{
+    background-color: #F6F6F6;       
     margin-top: 50px;;
+}
+
+.container{
+    max-width: 768px;
+    margin: 0px auto; 
 }
 
 .description__story{

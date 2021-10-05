@@ -35,28 +35,93 @@
                     <h2><a class="header__navlink" href="#me">mes projets</a></h2>
                 </div>                
             </section>  
-            <!-- image -->
-            
+        </nav> 
+        <!-- menu mobile -->
+        <section v-if="!this.mobileMenu" @click="toggleMobileMenu" class="mobile">
+            <div class="mobile__line"></div>
+            <div class="mobile__line"></div>
+            <div class="mobile__line"></div>
+        </section>      
+    </header>  
 
-        </nav>
-  </header>
+    <!-- overlay mobile affichant le menu -->
+    <MobileNavigation @updateMobileMenudata="updateMobileMenudata" v-bind:data="this.mobileMenu"/>
 </div>
   
 </template>
 
 <script>
-export default {
+import MobileNavigation from '../components/navigation/MobileMenu.vue';
 
-    name:'Navigation'
+export default {
+    
+    components:{
+        MobileNavigation
+    },
+    name:'Navigation',
+    data(){
+        return{
+            mobileMenu:false,
+            isMobileSize:null,
+            windowWidth: null,
+        }
+    },
+    created(){
+
+        window.addEventListener('resize', this.checkScreen);
+        this.checkScreen();
+
+    },
+    methods:{
+
+        toggleMobileMenu(){
+            this.mobileMenu = !this.mobileMenu
+        },
+
+        updateMobileMenudata(data){
+            this.mobileMenu = data
+        },        
+
+        checkScreen(){
+            this.windowWidth = window.innerWidth;
+            if(this.windowWidth <=768){
+                this.isMobileSize =true;
+                return;                
+            }
+            this.isMobileSize=false;
+            this.mobileMenu=false;
+        }
+        
+    }
 
 }
 </script>
 
 <style scoped>
 
+    @media(max-width: 768px){
+         .header{
+             position: relative;
+             min-height: 90px;
+             background-image: url('../assets/images/html.png'), url("../assets/images/css.png"),url("../assets/images/javascript.png") !important;
+             background-repeat: no-repeat;
+             background-size: contain;
+             background-position: 10% ,center,90%;
+         }
+        .header__navigation-container{
+            display: none !important;
+        }
+
+        .mobile {
+            display: flex !important;
+            position: absolute;
+            top: 15px;
+            right: 0px;
+        }
+    }
     .container{
         padding: var(--padding_navbar);
-        margin: 0px auto;
+        margin: 0px auto;        
     }
 
     .header__navbar{
@@ -71,6 +136,7 @@ export default {
     }
 
     .header__title{
+        opacity: 1 !important;
         font-weight: var(--text-bolder);
         font-size: var(--text_xxxl);        
         padding: 15px 0px;
@@ -118,6 +184,18 @@ export default {
     .header__navlink:hover{
           font-size: var(--text_xs);
 
+    }
+
+    .mobile{
+        display:none;
+        flex-direction: column;
+    }
+
+    .mobile__line{
+        margin: 3px 0px;
+        height: 4px;
+        width: 30px;
+        background-color: var(--title_color);
     }
 
     

@@ -2,9 +2,12 @@
   <div id="myExperience" class="container">
       <h2 class="title">mon parcours</h2>
 
-       <div class="time-line"></div>
+       
       <!-- reconvertion professionel -->
-      <section>          
+      <section class="article__section">  
+          <!-- repere temporel -->
+          <div class="time-line"></div>        
+
           <article class="article">
               <!-- conteneur date et echelle -->
               <header class="article__header">
@@ -19,6 +22,7 @@
               </header>
               <main class="article__content">
                   <h2 class="article__content-title">reconversion professionnelle</h2>
+                  <h2 class="article__content-date"></h2>
                   <ul class="article__list">
                       <li><p class="article__list-item">HTML/CSS/Javascript</p></li>
                       <li><p class="article__list-item">React & NodeJS</p></li>
@@ -32,8 +36,11 @@
       </section>
 
       <!-- reconvertion professionel -->
-      <section>
+      <section class="article__section">
           <article class="article">
+              <!-- repere temporel -->
+            <div class="time-line"></div>  
+
               <!-- conteneur date et echelle -->
               <header class="article__header">
                     <h3 class="article__header-title">
@@ -44,6 +51,7 @@
               </header>
               <main class="article__content">
                     <h2 class="article__content-title">autodidacte</h2>
+                    <h2 class="article__content-date mobile"> de 2021 à 2013</h2>
                     <p class="article__content-text"> Pationné par le développement WEB et logiciel: </p>
                     <ul class="article__list">
                         <li><p class="article__list-item">C#</p></li>
@@ -65,10 +73,38 @@ export default {
 </script>
 
 <style scoped>
-    .container{
-        padding: var(--padding_block);
-        position: relative;
+@media (max-width:768px){
+    
+    .article__content{    
+        margin: 10px 10px !important;
     }
+
+    .article__content-date{
+        display: inline-block !important;
+    }
+
+    .article__header{
+        display: none !important;
+    }
+    
+    .article__content::before{    
+        display: none !important;
+    }
+
+    .time-line{
+        display: none !important;
+    }
+
+    .time-line::before{
+       display: none !important;
+    }
+}
+    .container{
+        max-width: 768px;
+        margin: 0px auto;
+       
+    }
+
     .title{
         text-transform: uppercase;
         font-weight: var(--text-bold);
@@ -76,14 +112,32 @@ export default {
         color: var(--title_color);
         padding: 25px 0px;
         
+    }    
+
+    .article__section{
+         position: relative;
     }
+
     .time-line{
         position: absolute;
         width: 5px;
         background-color: #EBEBEB;
-        top: 150px;
-        height: 680px;
-        left: 155px;
+        top: 0px;
+        bottom: 0px;
+        left: 130px;
+        box-shadow: rgba(0, 0, 0, 0.24) 1px 2px 1px;
+    }
+
+    .time-line::before{
+        content: " ";
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        left: -10px;
+        background-color: #f0f0f0;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 5px;
+        top: calc(50% - 12px);
+        border-radius: 50%;
     }
 
     .article{
@@ -99,7 +153,7 @@ export default {
 
     }    
     
-    .article__header-title{
+    .article__header-title{        
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -139,7 +193,17 @@ export default {
     .article__content-title{
         text-transform: uppercase;
         font-weight: var(--text-bolder);
+        padding: 20px 5px;
+        display: inline-block;
+    }
+
+    .article__content-date{
+        font-weight: var(--text-bolder);
         padding: 20px 0px;
+        display: inline-block;
+        color: rgb(177, 177, 177);
+        font-size: var(--text_l);
+        display: none;
     }
 
     .article__list{
