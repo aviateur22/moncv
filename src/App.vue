@@ -4,6 +4,7 @@
     <MyDescription/>
     <ProfessionnalExperience/>
     <Techno/>
+    <Project/>
     <Contact/>
 
   </div>
@@ -13,9 +14,10 @@
 <script>
 import Navigation from './components/NavBar.vue';
 import MyDescription from './components/MyDescription.vue';
-import ProfessionnalExperience from './components/ProfessionalExcperience.vue'
+import ProfessionnalExperience from './components/ProfessionalExcperience.vue';
 import Techno from './components/Techno.vue';
-import Contact from './components/Contact.vue'
+import Contact from './components/Contact.vue';
+import Project from './components/Project.vue';
 
 
 export default {
@@ -25,6 +27,7 @@ export default {
     MyDescription,
     ProfessionnalExperience,
     Techno,
+    Project,
     Contact
 
 

@@ -41,6 +41,9 @@ export default {
 
 
 }
+    .container{
+        margin-bottom: 40px;
+    }
     .title{
         text-transform: uppercase;
         font-weight: var(--text-bold);
