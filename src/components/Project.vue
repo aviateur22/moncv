@@ -19,20 +19,19 @@
             </article>
       </div>
 
-    <div v-if="display" :bind="this.project" class="presentation">
+    <transition name="show">
+         <div v-if="display" :bind="this.project" class="presentation">
         <h2 class="presentation__title">
             {{ this.project.name }}
         </h2>
-        <div class="presentation__img-container">
+                  
+        <section class="presentation__img-container">                                
+            <img ref="image" class="presentation__img" :src="this.getImg(this.project.imgs,this.imgId)" :alt="this.project.imgs[this.imgId].alt"> 
+            <button @click="previousImg(this.project.imgs,this.imgId)">&lt;</button>
+            <button @click="nextImg(this.project.imgs,this.imgId)">&gt;</button>
             
-            <section class="presentation__techno-container">
-                <ul class="presentation__techno-list">
-                     <div v-for="(img,id) in this.project.imgs" :key="id">
-                        <img :src="this.getImg(img.url)" :alt="img.alt" class="presentation__img">    
-                     </div>
-                </ul>
-            </section>
-        </div>
+        </section>
+    
         <div class="presentation__text-container">
             <section class="presentation__techno-container">
                 <ul class="presentation__techno-list">
@@ -51,6 +50,8 @@
         </div>
         
     </div>
+    </transition>
+   
 
 
   </div>
@@ -69,10 +70,12 @@ export default {
                         technos:['C#','microsoft office'],
                         imgs:[
                             {
+                                id:1,
                                 url: 'easylux1-1.png',
                                 alt:'premiere photo de easylux v1' 
                                 },
                                {
+                                   id:2,
                                    url: 'easylux1-2.png',
                                    alt:'seconde photo de easylux v1' 
                                }
@@ -89,10 +92,12 @@ export default {
                         technos:['C# WPF' ,'requète API','sqlite'],
                         imgs:[
                                 {
+                                    id:1,
                                     url: 'easylux2-1.png',
                                     alt:'premiere photo de easylux v2' 
                                 },
                                {
+                                   id:2,
                                    url: 'easylux2-1.png',
                                    alt:'seconde photo de easylux v2' 
                                }
@@ -106,10 +111,12 @@ export default {
                         technos:[ 'C#','microsoft office','requète API'],
                         imgs:[
                                 {
+                                    id:1,
                                     url: 'notam1-1.png',
                                     alt:'premiere photo de notam manager v1' 
                                 },
                                 {
+                                    id:2,
                                    url: 'notam1-2.png',
                                    alt:'seconde photo de notam manager v1' 
                                 }
@@ -123,10 +130,12 @@ export default {
                         technos:['Google Apps Script','javascript','requète API'],
                         imgs:[
                                 {
+                                    id:1,
                                     url: 'notam2-1.png',
                                     alt:'premiere photo de notam manager v2' 
                                 },
                                 {
+                                    id:2,
                                    url: 'notam2-2.png',
                                    alt:'seconde photo de notam manager v2' 
                                 }
@@ -137,7 +146,8 @@ export default {
             display:false,
             project:null,
             path:'../assets/images/',
-            idBackup:undefined
+            projectIdBackup:undefined,
+            imgId:0
 
         }
     },
@@ -147,23 +157,123 @@ export default {
          * Affichage du projet
          */
         displayProject(id){
-            if(id===this.idBackup){
+            if(id===this.projectIdBackup){
                 this.display=false;
+                this.projectIdBackup=undefined
                 return;
             }
                 
             this.display=true;
             this.project=this.projects[id];
-            this.idBackup=id;
+            this.projectIdBackup=id;
             
 
         },
 
         /**
-         * Renvoie l'url de l'image
+         * Renvoie l'url de l'image utilisable par VUEJS
          */
-        getImg(name){
-            return require('../assets/images/'+ name)
+        getImg(imgDataArray, id){
+
+            try{
+                return require('../assets/images/'+ imgDataArray[id].url);
+            }
+            catch(err){
+                console.log('url image:' + url)
+                console.log(err)
+            }
+            
+          
+        },
+
+        /**
+         * Passe à l'image suivante
+         */
+        async nextImg(imgDataArray, id){
+            this.rightAnimationEffect();
+            setTimeout(() => {  
+
+                const count = this.imgId + 1;            
+
+                if(count > imgDataArray.length-1){
+                    
+                    this.imgId = 0
+                }                  
+                else
+                {   
+                    this.imgId = count
+                }
+
+                 this.resetAnimation();
+
+           }, 500);
+        },
+
+        /**
+         * Passe a l'image précedente
+         */
+        async previousImg(imgDataArray){
+
+            this.leftAnimationEffect();
+
+            setTimeout(() => {  
+
+                const count = this.imgId - 1; 
+
+
+                if(count < 0){
+                    
+                    this.imgId = imgDataArray.length-1
+                }                  
+                else
+                {   
+                    this.imgId = count
+                }
+
+                this.resetAnimation();
+           }, 500);
+        },       
+
+        /**
+         * slide right
+         */
+        rightAnimationEffect(){
+          this.$refs.image.style.transform = "translateX(500px)";
+          this.$refs.image.style.opacity = 0;           
+        },
+
+        /**
+         * slide left
+         */
+        leftAnimationEffect(){
+          this.$refs.image.style.transform = "translateX(-500px)";
+          this.$refs.image.style.opacity = 0;           
+        },
+
+        /**
+         * controle du reste de l'image
+         */
+        resetAnimation(){
+            this.startResetAnimation();
+
+            setTimeout(() => {  
+                this.finishResetAnimation();
+            },200);
+        },
+
+        /**
+         * remplacement de l'image
+         */
+        startResetAnimation(){
+          this.$refs.image.style.transform = "translateX(0px)";        
+         
+        },
+
+        /**
+         * reset opacity
+         */
+        finishResetAnimation(){
+            this.$refs.image.style.opacity = 1;        
         }
     }
     
@@ -275,11 +385,41 @@ export default {
         text-transform: lowercase;
         font-size: var(--text_s);
         color:  white;
-        padding-right: 10px;
+        padding-right: 10px;      
+        
+    }
+
+    /* Presentation du projet */
+
+    .presentation{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;      
         
         
     }
 
+    .presentation__title{
+        padding: 40px 0px;
+        text-transform: uppercase;
+        font-size: var(--text_xxxl);
+        font-weight: var(--text-bolder);
+    }
 
+    .presentation__img-container{
+        max-width: 600px;
+        background-color: tomato;
+        overflow: hidden;
 
+    }
+    
+    .presentation__img{
+        max-width: 100%;
+        object-fit: fill;
+        transition: all var(--time1) ease-in-out;
+        
+    }
+
+    
 </style>
