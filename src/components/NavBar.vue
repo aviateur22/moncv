@@ -24,12 +24,12 @@
                 
                 <div class="header_navlink-container">
                     <img class="header_navlink-picture" src="../assets/images/javascript.png" alt="ma photo">
-                    <h2><a class="header__navlink" href="#me">mes technos</a></h2>
+                    <h2><a class="header__navlink" href="#techno">mes technos</a></h2>
                 </div>
 
                 <div class="header_navlink-container">
                     <img class="header_navlink-picture" src="../assets/images/css.png" alt="ma photo">
-                    <h2><a class="header__navlink" href="#me">mes projets</a></h2>
+                    <h2><a class="header__navlink" href="#project">mes projets</a></h2>
                 </div>                
             </section>  
         </nav> 

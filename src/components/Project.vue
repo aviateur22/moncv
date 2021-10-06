@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div id="project" class="container">
       <h2 class="title">projets</h2>
 
       <div class="project-container">
-           <article @click="displayProject(id)" class="project" v-for="project,id in projects" :key="id">  
+           <article ref="projects"  @click="displayProject(id)" class="project" v-for="project,id in projects" :key="id">  
                <!-- overlay de décoration -->
                <div class="project__overlay">project{{ project.id +1}}</div>              
                 <div class="project__title-border">
@@ -19,37 +19,40 @@
             </article>
       </div>
 
-    <transition name="show">
-         <div v-if="display" :bind="this.project" class="presentation">
-        <h2 class="presentation__title">
-            {{ this.project.name }}
-        </h2>
-                  
-        <section class="presentation__img-container">                                
-            <img ref="image" class="presentation__img" :src="this.getImg(this.project.imgs,this.imgId)" :alt="this.project.imgs[this.imgId].alt"> 
-            <button @click="previousImg(this.project.imgs,this.imgId)">&lt;</button>
-            <button @click="nextImg(this.project.imgs,this.imgId)">&gt;</button>
-            
-        </section>
-    
-        <div class="presentation__text-container">
-            <section class="presentation__techno-container">
-                <ul class="presentation__techno-list">
-                    <li class="presentation__techno-item" v-for="techno,id in this.project.technos" :key="id">
-                        {{ techno }}
-                    </li>
-                </ul>
+    <transition name="fade">
+        <div v-if="display" :bind="this.project" class="presentation">
+            <h2 class="presentation__title">
+                {{ this.project.name }}
+            </h2>
+                    
+            <section class="presentation__img-container">                                
+                <img @click="displayInformation" ref="image" class="presentation__img" :src="this.getImg(this.project.imgs,this.imgId)" :alt="this.project.imgs[this.imgId].alt"> 
+                <button class="presentation__btn presentation--left" @click="previousImg(this.project.imgs,this.imgId)">&lt;</button>
+                <button class="presentation__btn" @click="nextImg(this.project.imgs,this.imgId)">&gt;</button>
+                 <div ref="information" class="presentation__text-container">
+                     <button @click="closedPresentation" class="presentation_text-closed">&times;</button>
+                     <!-- techno utilisé -->
+                    <section class="presentation__techno-container">
+                        <ul class="presentation__techno-list">
+                            <li class="presentation__techno-item" v-for="techno,id in this.project.technos" :key="id">
+                                {{ techno }}
+                            </li>
+                        </ul>
+                    </section>
+                    <!-- role de joué -->
+                    <section class="presentation__comment-container">
+                        <ul class="presentation__comment-list">
+                            <li class="presentation__comment-item" v-for="comment,id in this.project.comments" :key="id">
+                                {{ comment }}
+                            </li>
+                        </ul>
+                    </section>
+                </div>                
             </section>
-            <section class="presentation__comment-container">
-                <ul class="presentation__comment-list">
-                    <li class="presentation__comment-item" v-for="comment,id in this.project.comments" :key="id">
-                        {{ comment }}
-                    </li>
-                </ul>
-            </section>
-        </div>
         
-    </div>
+           
+            
+        </div>
     </transition>
    
 
@@ -154,15 +157,16 @@ export default {
     methods:{
 
         /**
-         * Affichage du projet
+         * Affichage du projet en detail
          */
         displayProject(id){
             if(id===this.projectIdBackup){
+               
                 this.display=false;
                 this.projectIdBackup=undefined
                 return;
             }
-                
+            
             this.display=true;
             this.project=this.projects[id];
             this.projectIdBackup=id;
@@ -170,6 +174,13 @@ export default {
 
         },
 
+        displayInformation(){
+            this.$refs.information.style.transform = "translateY(-253px)"
+        },
+
+        closedPresentation(){
+            this.$refs.information.style.transform = "translateY(0px)"
+        },
         /**
          * Renvoie l'url de l'image utilisable par VUEJS
          */
@@ -284,6 +295,24 @@ export default {
 </script>
 
 <style scoped>
+    @media(max-width: 768px){
+
+        .project-container{
+            flex-direction: column !important;            
+        }
+
+        .project{
+            margin: 15px 0px;
+        }
+
+        .presentation__img-container{
+            max-width: 320px !important;
+        }
+
+         .presentation__btn{
+            top: calc(110% - 25px) !important;
+        }
+    }
     .container{
         max-width: 1600px;
         margin: 35px auto;
@@ -293,6 +322,15 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    .title{
+           text-transform: uppercase;
+        font-weight: var(--text-bold);
+        font-size: var(--text_xxl);
+        color: var(--title_color);
+        padding: 25px 0px;
+        text-align: center;
     }
 
     .project{
@@ -325,14 +363,6 @@ export default {
         
     }
 
-    /* .project__title-border{
-        padding: 3px;
-        transform: translateX(-500px);
-        transition: all var(--time1) ease-in;
-        background-color: #34568B;
-        opacity: 0;
-        
-    } */
     .project__title{
         border: 1px solid white;
         background-color: rgba(105, 108, 112, 0.6);
@@ -391,11 +421,30 @@ export default {
 
     /* Presentation du projet */
 
+    .fade-enter-active {
+        animation: bounce-in .5s;
+    }
+    .fade-leave-active {
+        animation: bounce-in .5s reverse;
+    }
+    @keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+    }
+
     .presentation{
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;      
+        justify-content: center;  
+        position: relative;    
         
         
     }
@@ -408,18 +457,122 @@ export default {
     }
 
     .presentation__img-container{
-        max-width: 600px;
-        background-color: tomato;
+        width: 600px;       
+        height: 250px;            
+        box-shadow: rgba(0, 0, 0, 0.24) 2px 3px 5px;  
         overflow: hidden;
+       
 
+
+    }
+
+    .presentation__btn{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 20%;
+        top: calc(50% - 10px);
+        background-color: transparent;
+        border:0.1px solid gainsboro;
+        font-size: var(--text_xxxl);
+        cursor: pointer;
+        border-radius: 100%;
+        height: 30px;
+        width: 30px;
+        color:rgb(226, 226, 226);
+        transition: all var(--time1) ease;
+    }
+
+    .presentation--left{
+        left: 20%;
+    }
+
+    .presentation__btn:hover{
+        background-color: rgb(238, 238, 238);
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.24) 2px 3px 5px;  
     }
     
     .presentation__img{
-        max-width: 100%;
-        object-fit: fill;
-        transition: all var(--time1) ease-in-out;
+        width: 100%;
+        object-fit:cover;
+        transition: all var(--time1) ease-in-out;      
+        cursor: pointer;
+        height: 250px;
         
     }
+
+    /** texte d'information sur le developpement */
+    .presentation__text-container{
+        position: relative;
+        width: 100%;
+        background-color: white;
+        height: 250px;
+        transition: all var(--time1) ease;
+
+    }
+
+    .presentation_text-closed{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 10px;
+        top:10px;
+        border:0.5px solid lightgray;
+        border-radius: 100%;
+        width: 25px;
+        height: 25px;
+        font-size: var(--text_xl);
+        cursor: pointer;
+        color: red;
+        transition: all var(--time1) ease;
+        
+    }
+    
+    .presentation_text-closed:hover{
+        box-shadow: rgba(0, 0, 0, 0.24) 2px 3px 5px;
+        transform: scale(1.1);
+    }
+
+    .presentation__techno-list{      
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        transition: all var(--time1) ease;
+        width: 100%;
+        padding: 10px 0px;
+        font-weight: 800;
+        font-size: var(--text_xs);
+        text-transform: uppercase;
+    }
+
+    .presentation__techno-item{
+        background-color: tomato;
+        padding: 5px;
+        color: white;
+        border-radius: 10px;
+
+
+    }
+
+    .presentation__comment-list{
+        padding:25px ;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        list-style-type: disc;
+        list-style-position: inside;
+        line-height: 2;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: var(--text_s);
+
+    }
+  
+    
+
 
     
 </style>

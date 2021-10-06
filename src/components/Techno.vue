@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="techno" class="container">
       <h2 class="title">techno</h2>
         <div class="container-article">
             <section>
