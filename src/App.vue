@@ -1,12 +1,14 @@
 <template>
   <div class="container">
     <Navigation/>
-    <MyDescription/>
+     <MyDescription/>
     <ProfessionnalExperience/>
     <Techno/>
     <Project/>
     <Contact/>
+    <FooterLinkedin/>
 
+   
   </div>
   
 </template>
@@ -18,6 +20,7 @@ import ProfessionnalExperience from './components/ProfessionalExcperience.vue';
 import Techno from './components/Techno.vue';
 import Contact from './components/Contact.vue';
 import Project from './components/Project.vue';
+import FooterLinkedin from './components/FooterLinkedin.vue';
 
 
 export default {
@@ -28,7 +31,9 @@ export default {
     ProfessionnalExperience,
     Techno,
     Project,
-    Contact
+    Contact,
+    FooterLinkedin
+    
 
 
   }

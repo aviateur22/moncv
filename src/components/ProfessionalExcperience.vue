@@ -54,14 +54,12 @@
                     <h2 class="article__content-title">autodidacte</h2>
                     <h2 class="article__content-date mobile"> de 2021 à 2013</h2>
                     <p class="article__content-text"> Pationné par le développement WEB et logiciel: </p>
-                    <ul class="article__list">
-                        <li><p class="article__list-item">C#</p></li>
-                        <li><p class="article__list-item">WPF</p></li>
-                        <li><p class="article__list-item">JAVASCRIPT</p></li>
-                        <li><p class="article__list-item">VUEJS</p></li>
-                        <li><p class="article__list-item">VBA</p></li>
-                        <li><p class="article__list-item">VB</p></li>
-                        <li><p class="article__list-item">G A S</p></li>
+                    <ul class="article__list">           
+                        <li><p class="article__list-item">Apprentissage de diffrents languages de programmation</p></li>             
+                        <li><p class="article__list-item">Création d'applications personnelles </p></li>
+                        <li><p class="article__list-item">Test de wireframe et prototype sur figma</p></li>
+                        <li><p class="article__list-item">ébauche de projet pour la famille</p></li>
+                        <li><p class="article__list-item">développement d'application pour mon travail</p></li>
                     </ul>                    
               </main>
           </article>

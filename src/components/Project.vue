@@ -10,7 +10,7 @@
 
     <transition name="fade">
         <div ref="projectDisplay"  v-if="this.display" class="project-display">
-            <ProjectDisplay :project="this.project"/>            
+            <ProjectDisplay :project="this.projectParam"/>            
         </div>
     </transition>
    
@@ -113,6 +113,7 @@ export default {
                 ],
             display:false,
             project:null,
+            projectParam:undefined,
             path:'../assets/images/',
             projectIdBackup:undefined,
             
@@ -127,31 +128,22 @@ export default {
          */
         displayProject(project){
 
-           
-            console.log(project)
+            //Masque les information du projet
             if(project.id===this.projectIdBackup){
                
                 this.display=false;
                 this.projectIdBackup=undefined
                 return;
             }
-            
-            
-            this.display=true;
-            this.project=project;
-            this.projectIdBackup=project.id;
 
-            //Effet de passage d'un projet a l'autre
-            if(this.$refs.projectDisplay){
-                this.$refs.projectDisplay.style.opacity = 1;
-                setTimeout(()=>{
-                    this.$refs.projectDisplay.style.opacity = 1;
-                },300)
-            }
+            //Gestion de l'affichage via le WATCH               
+            this.project=project;
+            
+            this.projectIdBackup=project.id;
         },
 
         /**
-         * Reset de la couleur des boutons projets
+         * Reset de la couleur des boutons projets au click
          */
         resetColor(element){
             if(this.previousElementClick && element != this.previousElementClick){
@@ -161,17 +153,29 @@ export default {
             
             this.previousElementClick = element
 
-        },
+        }
+    },
+    watch:{
+        /**Gestion de l'affichage d'un projet à l'autre */
+        project: function (){
+            if(this.$refs.projectDisplay)
+            {
+                   this.$refs.projectDisplay.style.opacity = 0;
+            }
 
-        /**
-         * effet de masquage a l'affichage d'un nouv. projet 
-         */
-        hideOnClick(){
+            setTimeout(()=>{
+                this.projectParam = this.project;
+                this.display=true;
+                if(this.$refs.projectDisplay)
+                {
+                    this.$refs.projectDisplay.style.opacity = 1;
+                }
+            },500)
+              
 
-
+            
         }
 
-       
     }
     
 

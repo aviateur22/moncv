@@ -4,9 +4,19 @@
   <div id="MyDescription" class="container">
       <section class="description__story">
          
-          <p class="description__story-content">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni voluptates deserunt id nostrum dolore. Totam, atque sapiente quis ratione doloremque est! Libero alias natus nihil!
-          </p>
+            <p class="description__story-content">
+              Je suis autodidacte et pationné en développement Web et logiciel depuis quelques années. Aujourd'hui, je franchis le pas, je commence une reconversion professionnelle pour devenir développeur Web.  
+            </p>
+            <p class="description__story-content">
+              Mon travail actuel m'a permis d'acquérir autonomie et le goût d'être en équipe. 
+              Mes rèsponsables mon fait confiance et j'ai ainsi eu l'occasion de proposer, développer et de mettre en place certains logiciels.
+            </p>
+            <p class="description__story-content">
+              Je suis de nature curieux et j'aime apprendre. Mon défis actuel est l'apprentissage de VUEJS.         
+            </p>
+
+
+         
       </section>
       <section class="description__profil">
           <div class="profil__container">
@@ -73,6 +83,7 @@ export default {
 .description__story{
     flex-grow: 0;
     max-width: 500px;
+    padding-right: 45px;
 }
 
 .description__story-title{
@@ -86,6 +97,9 @@ export default {
 
 .description__story-content{
     line-height: 1.5;
+    text-align:justify;
+    word-break:keep-all;
+    padding-bottom: 25px;
    
 }
 

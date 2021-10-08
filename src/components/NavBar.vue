@@ -30,6 +30,7 @@
 
     <!-- overlay mobile affichant le menu -->
     <MobileNavigation @updateMobileMenudata="updateMobileMenudata" v-bind:data="this.mobileMenu"/>
+    <hr class="separator">
 </div>
   
 </template>
@@ -243,7 +244,7 @@ export default {
     }
 
     .header__navlink:hover{
-        text-shadow: 1px 1px 2px black;
+        text-shadow: 0px 0px 1px black;
 
     }
 
@@ -258,6 +259,13 @@ export default {
         height: 4px;
         width: 30px;
         background-color: var(--title_color);
+    }
+
+    .separator{
+        border-top: 0.1px solid gray;
+        max-width: 1200px;
+        margin: 0px auto;
+        transform: translateY(30px);
     }
 
     
