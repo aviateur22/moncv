@@ -40,6 +40,7 @@ export default {
 
 html, body {
   font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
 }
 #app {
   font-family: 'Roboto', sans-serif;

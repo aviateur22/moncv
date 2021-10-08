@@ -106,7 +106,9 @@ export default {
     .container{
         max-width: 768px;
         margin: 0px auto;
-       
+    }
+    .container:focus{
+        transform:translateX(-100px);
     }
 
     .title{

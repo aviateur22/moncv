@@ -116,7 +116,7 @@ export default {
     .description__name{
         text-transform: uppercase;
         font-weight: var(--text-bold);
-        font-size: var(--text_xl);
+        font-size: var(--text_l);
         line-height: 2;
         color: var(--menu_color);
 
