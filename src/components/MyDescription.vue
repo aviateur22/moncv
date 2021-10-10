@@ -20,11 +20,15 @@
       </section>
       <section class="description__profil">
           <div class="profil__container">
-              <img src='../assets/images/profile.png' alt="ma photo de profil" class="profil__img">
+              <div class="profil__bubble">
+                  <Bubble :data="bubbleInformation"/>
+              </div>
+              
+              <img src='../assets/images/profile.png' alt="ma photo de profil" class="profil__img">              
               <div class="description__detail-container">
                   <h2 class="description__name"> <span class="description__name-category"> nom:  </span> Cyrille Cadé</h2>
                   <h2 class="description__name"> <span class="description__name-category">age:</span> 37 ans</h2>
-                  <h2 class="description__name"> <span class="description__name-category" >ville:</span> Auterive 31190</h2>
+                  <h2 class="description__name"> <span class="description__name-category" >ville:</span> Auterive 31190</h2>                  
               </div>
 
           </div>
@@ -36,8 +40,20 @@
 </template>
 
 <script>
+import Bubble from './description/InformationBubble.vue'
 export default {
-    name:'MyDescription'
+    name:'MyDescription',
+    components:{
+        Bubble
+    },
+    data(){
+        return{
+            bubbleInformation:{
+                title:"Ma situation personnelle",
+                text:"je suis en couple, avec 2 enfants"
+            }
+        }
+    }
 }
 </script>
 
@@ -82,7 +98,8 @@ export default {
 
 .description__story{
     flex-grow: 0;
-    max-width: 500px;
+    width:  50%;
+    padding-left: 10px;
     padding-right: 45px;
 }
 
@@ -107,16 +124,23 @@ export default {
     .description__profil{
         flex-grow:3;
         padding-bottom: 20px;
-        min-width: 320px
+        width: 50%;
     }
 
     .profil__container{
+        position: relative;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        
     }
 
-    
+    .profil__bubble{
+        position:absolute;
+        top: 0px;
+        right: 0px;
+    }
+
     .description__detail-container{        
         padding: 0px 20px;
     }

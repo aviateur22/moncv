@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="contact" class="container">
       <h2 class="title">contact</h2>
 
       <p class="text"><span class="strong">Vous souhaitez me rencontrer</span>, je suis disponible sur Auterive et ses alentous</p>

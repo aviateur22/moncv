@@ -6,9 +6,6 @@
             <section class="header__title-container">
                 <!-- titre -->
                 <h1 id="title" class="header__title">DEVELOPPEUR WEB FULLSTACK JAVASCRIPT</h1>
-                <!-- <TitleAnimation :letter="letter" v-for="(letter,id ) in  this.titleArray[this.wordIndex][this.letterIndex]" :key="id">
-
-                </TitleAnimation> -->
             </section>
 
             <!-- zone de navigation -->
@@ -18,21 +15,22 @@
                 <h2><a class="header__navlink" href="#myExperience">mon parcours</a></h2>
                 <h2><a class="header__navlink" href="#techno">mes technos</a></h2>
                 <h2><a class="header__navlink" href="#project">mes projets</a></h2>
+                <h2><a class="header__navlink" href="#contact">contacts</a></h2>
             </section>  
         </nav> 
         <!-- menu mobile -->
-        <section v-if="!this.mobileMenu" @click="toggleMobileMenu" class="mobile">
+        <section v-if="this.mobileMenuHamburger" @click="toggleMobileMenu" class="mobile">
             <div class="mobile__line"></div>
             <div class="mobile__line"></div>
             <div class="mobile__line"></div>
         </section>      
     </header>  
 
-    <!-- overlay mobile affichant le menu -->
-    <MobileNavigation @updateMobileMenudata="updateMobileMenudata" v-bind:data="this.mobileMenu"/>
+    
     <hr class="separator">
 </div>
-  
+  <!-- overlay mobile affichant le menu -->
+    <MobileNavigation v-if="this.displayMobileOverlay" @toggleMobileMenu="toggleMobileMenu"/> 
 </template>
 
 <script>
@@ -46,11 +44,22 @@ export default {
     name:'Navigation',
     data(){
         return{
-            mobileMenu:false,
+            /**affichage bouton menu hamburger */
+            mobileMenuHamburger:false,
+
+            /**Taille ecran format mobile */
             isMobileSize:null,
+
+            /**taille de l'écran */
             windowWidth: null,
+
+            /* position du scroll*/
             lastScrollPosition:0,
-            displayMenu:true
+
+            displayMenu:true,
+
+            /**Affichage overlay Mobile */
+            displayMobileOverlay:false
             
         }
     },
@@ -78,12 +87,13 @@ export default {
 
         /**action de bouton menu hanburger */
         toggleMobileMenu(){
-            this.mobileMenu = !this.mobileMenu
-        },
+           
+            /**gestion affichage du bouton hamburger */
+            this.mobileMenuHamburger = !this.mobileMenuHamburger
 
-        updateMobileMenudata(data){
-            this.mobileMenu = data
-        },        
+            /**affichage overlay mennu du mobile */
+             this.displayMobileOverlay= !this.displayMobileOverlay;
+        },
 
         /**
          * Verification taille de l'ecran pour masquer le menu MOBILE
@@ -92,10 +102,11 @@ export default {
             this.windowWidth = window.innerWidth;
             if(this.windowWidth <=768){
                 this.isMobileSize =true;
+                this.mobileMenuHamburger=true;
                 return;                
             }
             this.isMobileSize=false;
-            this.mobileMenu=false;
+            this.mobileMenuHamburger=false;
         },
         onScroll(){  
             // Position du scroll
@@ -146,21 +157,21 @@ export default {
         .header{
             position: relative;
             min-height: 80px;
-            background-image: url('../assets/images/html.png'), url("../assets/images/css.png"),url("../assets/images/javascript.png") !important;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: 10% ,center,90%;
         }
 
         .header__navigation-container{
             display: none !important;
         }
 
+        .header__title{                
+        font-size: var(--text_xxl) !important;    
+        }
+
         .mobile {
             display: flex !important;
-            position: absolute;
-            top: 15px;
-            right: 0px;
+            position: absolute !important ;
+            top: 15px !important;
+            right: 0px !important
         }
     }
     .container{       
@@ -171,6 +182,11 @@ export default {
         transition: all var(--time1) ease;
         z-index: 6;
         padding-bottom: 35px;
+        background-image: url('../assets/images/html.png'), url("../assets/images/css.png"),url("../assets/images/javascript.png") !important;
+        background-position: 10%, center, 90%;
+        background-repeat: no-repeat;
+        background-size:90px;
+        background-color:white;
     }
 
     /* gestion reduction height du container */
@@ -193,26 +209,18 @@ export default {
         font-size: var(--text_xxxl);        
         padding: 15px 0px;
         text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
-        color: white;
-        background-color: white;
+        color: white;       
         width: 100%;
         padding: 25px 15px;
-        background-color: white;
-
     }   
 
     .header__navigation-container{      
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 90px;
-        background-image: url('../assets/images/html.png'), url("../assets/images/css.png"),url("../assets/images/javascript.png") !important;
-        background-position: 10%, center, 90%;
-        background-repeat: no-repeat;
-        background-size:contain;
-        background-color:white;
+        height: 90px;        
         transition: all var(--time1) ease-in;
-        padding: 15px 180px;
+        padding: 15px 100px;
     }
 
     /**Masquer le menu au scroll */
@@ -221,16 +229,15 @@ export default {
     }
 
     .header_navlink-container{
-        position: relative;
         display: flex;
-        justify-content: center;
-        align-items: center;        
-        width: 155px;
-        
+        justify-content: space-between;
+        align-items: center;   
+        width: 100%;    
+               
     }
 
-    .header__navlink{
-        display: block;
+    .header__navlink{    
+        text-align: center;    
         text-transform: uppercase;
         text-decoration: none;
         font-weight: bold;
@@ -238,8 +245,9 @@ export default {
         font-size: var(--text_xl);
         cursor: pointer;
         transition: all var(--time1) ease-in-out;
-        transform: translateY(70px);
-        
+        transform: translateY(70px);      
+        display: inline-block;
+        margin: 0px 20px;
         
     }
 

@@ -1,12 +1,24 @@
 <template>
-  <div class="mobile-menu" :class="{'display-mobile-menu': this.data }">
-        <!-- menu close -->
-       
-        <section @click="emitToggleMobileMenu" class="close-btn">
-            <div class="close-btn__line1"></div>            
-            <div class="close-btn__line2"></div>
-        </section>
-    </div>   
+    <div class="container">
+        <div class="mobile-menu">
+            <!-- menu close -->        
+            <div @click="closeMenuOverlay" class="close-btn">
+                <div class="close-btn__line1"></div>            
+                <div class="close-btn__line2"></div>
+            </div>    
+
+            <!-- zone de navigation -->
+            <section  class="navigation">                
+                <!-- liens de navigation  -->
+                <h2 @click="closeMenuOverlay"><a  class="navigation__navlink" href="#myExperience">mon parcours</a></h2>
+                <h2 @click="closeMenuOverlay"><a class="navigation__navlink" href="#techno">mes technos</a></h2>
+                <h2 @click="closeMenuOverlay"><a class="navigation__navlink" href="#project">mes projets</a></h2>
+                <h2 @click="closeMenuOverlay"><a class="navigation__navlink" href="#contact">contacts</a></h2>
+            </section>          
+        </div>   
+
+    </div>
+  
 </template>
 
 <script>
@@ -16,31 +28,30 @@ export default {
         return{
             
         }
-    },
-    props:['data'],
+    },   
     methods:{
-        emitToggleMobileMenu(){
+        closeMenuOverlay(){
             // renvoie false pour l'affichage de l'overlay
-            this.$emit('updateMobileMenudata', false)
+            this.$emit('toggleMobileMenu', true)
         }
     }
 
 }
 </script>
 
-<style>
+<style scoped>
 
     .display-mobile-menu{
         display: block !important;
     }
     .mobile-menu{
-        display: none;
+        display: block;
         position: fixed;
         left: 0px;
         top:0px;
         bottom: 0px;
         right: 0px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.7);
         z-index: 2;
     }
 
@@ -90,4 +101,17 @@ export default {
 
     }
 
+    .navigation{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .navigation__navlink{
+        color:white;
+        font-weight: 600px;
+        text-transform: uppercase;
+    }
 </style>
