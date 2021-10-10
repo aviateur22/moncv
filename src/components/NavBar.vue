@@ -1,5 +1,6 @@
 <template>
-<div :class="{'header__navigation-container--hidden': !this.displayMenu}" class="container">
+<div class="background-animtion">
+    <div :class="{'header__navigation-container--hidden': !this.displayMenu}" class="container">
     <header class="header">      
         <nav class="header__navbar">
             <!-- zone de titre -->
@@ -24,11 +25,11 @@
             <div class="mobile__line"></div>
             <div class="mobile__line"></div>
         </section>      
-    </header>  
-
-    
+    </header>    
     <hr class="separator">
+    </div>
 </div>
+
   <!-- overlay mobile affichant le menu -->
     <MobileNavigation v-if="this.displayMobileOverlay" @toggleMobileMenu="toggleMobileMenu"/> 
 </template>
@@ -174,11 +175,31 @@ export default {
             right: 0px !important
         }
     }
+    /* animation  */
+
+    .background-animtion{
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        animation-name: gradient 15s ease infinite;
+    }
+
+    @keyframes gradients {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+   
+
     .container{       
         margin: 0px auto;   
         position: sticky;
         top:0px;
-        background-color: white;
         transition: all var(--time1) ease;
         z-index: 6;
         padding-bottom: 35px;
@@ -186,7 +207,7 @@ export default {
         background-position: 10%, center, 90%;
         background-repeat: no-repeat;
         background-size:90px;
-        background-color:white;
+        
     }
 
     /* gestion reduction height du container */

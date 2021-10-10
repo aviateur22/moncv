@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Bubble from './description/InformationBubble.vue'
+import Bubble from './bubble/InformationBubble.vue'
 export default {
     name:'MyDescription',
     components:{
@@ -68,9 +68,13 @@ export default {
         align-items: center;
     }
 
+    .description__story{      
+        max-width:  100% !important;     
+    }
+
     .description__profil{
         margin-top: 20px !important;
-        min-width: none !important
+        min-width: 100% !important
     }
 
     .profil__container{
@@ -97,8 +101,7 @@ export default {
 }
 
 .description__story{
-    flex-grow: 0;
-    width:  50%;
+    max-width:  50%;
     padding-left: 10px;
     padding-right: 45px;
 }
@@ -137,8 +140,8 @@ export default {
 
     .profil__bubble{
         position:absolute;
-        top: 0px;
-        right: 0px;
+        top: calc(0%);
+        right:calc(0%);
     }
 
     .description__detail-container{        

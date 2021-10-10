@@ -1,11 +1,16 @@
 <template>
   <div id="project" class="container">
       <h2 class="title">projets</h2>
+      
 
       <div class="project-container">
-           <ProjectButton ref="projects" v-for="(project,id) in projects" :project="project" @reset-color="resetColor" @display-project="displayProject"  :key="id">  
+         <!-- info bulle -->
+       <div class="profil__bubble">
+            <Bubble :data="bubbleInformation"/>
+        </div>
+           <ProjectButton ref="projects" v-for="(project,id) in projects" :project="project" @reset-color="resetColor" @display-project="displayProject"  :key="id"/>  
               
-            </ProjectButton>
+            
       </div>
 
     <transition name="fade">
@@ -21,12 +26,14 @@
 
 <script>
 import ProjectButton from './project/ProjectButton.vue';
-import ProjectDisplay from './project/ProjectDisplay.vue'
+import ProjectDisplay from './project/ProjectDisplay.vue';
+import Bubble from './bubble/InformationBubble.vue'
 export default {
     name:'Project',
     components:{
         ProjectButton,
-        ProjectDisplay
+        ProjectDisplay,
+        Bubble
     },
     data(){
         return{            
@@ -115,9 +122,12 @@ export default {
             project:null,
             projectParam:undefined,
             path:'../assets/images/',
-            projectIdBackup:undefined,
-            
-            previousElementClick:null
+            projectIdBackup:undefined,            
+            previousElementClick:null,
+            bubbleInformation:{
+                title:"Astuce",
+                text:"Cliquer sur un projet pour avoir plus de détail"
+            }
 
         }
     },
@@ -212,14 +222,24 @@ export default {
     }
     .container{
         max-width: 1600px;
-        margin: 35px auto;
+        margin: 35px auto;        
+        
     }
 
     .project-container{
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
+    }
+
+     .profil__bubble{
+        position:absolute;
+        top: 0px;
+        right:0px;   
+        transform:translateY(-100px);
+        z-index: 2;
     }
 
     .title{
