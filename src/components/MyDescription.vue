@@ -90,7 +90,7 @@ export default {
 
 .main-container{
     background-color: #F6F6F6;       
-    margin-top: 50px;;
+    margin-top: 5px;;
 }
 
 .container{

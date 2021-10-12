@@ -1,46 +1,53 @@
-<template>
-<div class="background-animtion">
+<template> 
+ <!--animation -->
+    <div class="animation">
+    <BackgroundAnimation/>
+    </div>  
     <div :class="{'header__navigation-container--hidden': !this.displayMenu}" class="container">
-    <header class="header">      
-        <nav class="header__navbar">
-            <!-- zone de titre -->
-            <section class="header__title-container">
-                <!-- titre -->
-                <h1 id="title" class="header__title">DEVELOPPEUR WEB FULLSTACK JAVASCRIPT</h1>
-            </section>
-
-            <!-- zone de navigation -->
-            <section  class="header__navigation-container">
+        
+        
+        <header class="header">      
                 
-                <!-- liens de navigation  -->
-                <h2><a class="header__navlink" href="#myExperience">mon parcours</a></h2>
-                <h2><a class="header__navlink" href="#techno">mes technos</a></h2>
-                <h2><a class="header__navlink" href="#project">mes projets</a></h2>
-                <h2><a class="header__navlink" href="#contact">contacts</a></h2>
-            </section>  
-        </nav> 
-        <!-- menu mobile -->
-        <section v-if="this.mobileMenuHamburger" @click="toggleMobileMenu" class="mobile">
-            <div class="mobile__line"></div>
-            <div class="mobile__line"></div>
-            <div class="mobile__line"></div>
-        </section>      
-    </header>    
-    <hr class="separator">
-    </div>
-</div>
+            <nav class="header__navbar">
+                <!-- zone de titre -->
+                <!-- <section class="header__title-container"> -->
+                    <!-- titre -->
+                    <!-- <h1 id="title" class="header__title">DEVELOPPEUR WEB FULLSTACK JAVASCRIPT</h1> -->
+                <!-- </section> -->
 
+                <!-- zone de navigation -->
+                <section  class="header__navigation-container">
+                    
+                    <!-- liens de navigation  -->
+                    <h2><a class="header__navlink" href="#myExperience">mon parcours</a></h2>
+                    <h2><a class="header__navlink" href="#techno">mes technos</a></h2>
+                    <h2><a class="header__navlink" href="#project">mes projets</a></h2>
+                    <h2><a class="header__navlink" href="#contact">contacts</a></h2>
+                </section>  
+            </nav> 
+            <!-- menu mobile -->
+            <section v-if="this.mobileMenuHamburger" @click="toggleMobileMenu" class="mobile">
+                <div class="mobile__line"></div>
+                <div class="mobile__line"></div>
+                <div class="mobile__line"></div>
+            </section>      
+        </header>    
+        <!-- <hr class="separator"> -->
+    </div>
+    
   <!-- overlay mobile affichant le menu -->
     <MobileNavigation v-if="this.displayMobileOverlay" @toggleMobileMenu="toggleMobileMenu"/> 
 </template>
 
 <script>
 import MobileNavigation from '../components/navigation/MobileMenu.vue';
+import BackgroundAnimation from './navigation/BackgroundAnimation.vue'
 
 export default {
     
     components:{
         MobileNavigation,
+        BackgroundAnimation
     },
     name:'Navigation',
     data(){
@@ -155,6 +162,7 @@ export default {
 <style scoped>
 
     @media(max-width: 768px){
+    
         .header{
             position: relative;
             min-height: 80px;
@@ -175,26 +183,6 @@ export default {
             right: 0px !important
         }
     }
-    /* animation  */
-
-    .background-animtion{
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-        animation-name: gradient 15s ease infinite;
-    }
-
-    @keyframes gradients {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-
-   
 
     .container{       
         margin: 0px auto;   
@@ -203,16 +191,25 @@ export default {
         transition: all var(--time1) ease;
         z-index: 6;
         padding-bottom: 35px;
-        background-image: url('../assets/images/html.png'), url("../assets/images/css.png"),url("../assets/images/javascript.png") !important;
+        /* background-image: url('../assets/images/html.png'), url("../assets/images/css.png"),url("../assets/images/javascript.png") !important;
         background-position: 10%, center, 90%;
-        background-repeat: no-repeat;
+        background-repeat: no-repeat; */
         background-size:90px;
+        background-color: rgba(90, 89, 89, 0.4);
         
     }
 
     /* gestion reduction height du container */
-
+    .animation{
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        width: 100%;
+    }
     
+    .header{
+        position: relative;
+    }
 
     .header__navbar{
         display: flex;
@@ -239,14 +236,14 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 90px;        
+        height: 120px;        
         transition: all var(--time1) ease-in;
         padding: 15px 100px;
     }
 
     /**Masquer le menu au scroll */
     .header__navigation-container--hidden{
-         transform: translate3d(0, -80%, 0);
+         transform: translate3d(0, -70%, 0);
     }
 
     .header_navlink-container{
@@ -262,13 +259,14 @@ export default {
         text-transform: uppercase;
         text-decoration: none;
         font-weight: bold;
-        color: var(--menu_color);
+        color: white;
         font-size: var(--text_xl);
         cursor: pointer;
         transition: all var(--time1) ease-in-out;
         transform: translateY(70px);      
         display: inline-block;
         margin: 0px 20px;
+        text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgb(189, 189, 189), 0 0 0.2em rgb(168, 168, 168);
         
     }
 

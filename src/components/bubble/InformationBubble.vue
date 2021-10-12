@@ -30,6 +30,7 @@ export default {
 <style scoped>
 .bubble__outer{
     background-color:transparent; 
+    height: 100px;
 
 }
 
