@@ -1,10 +1,11 @@
 # Curriculum vitae
+***
 
 ## Project presentation
 
 This is a curriculum vitae developped with VueJs.
 
-![image extrait de mon CV](https://github.com/aviateur22/moncv/blob/master/src/assets/images/banner.PNG "Titre, facultatif")
+![image extrait de mon CV](https://github.com/aviateur22/moncv/blob/master/src/assets/images/github/banner.PNG "Titre, facultatif")
 
 ## Main feature
 - Responsive for **MOBILE** and **TABLET**
@@ -14,12 +15,30 @@ This is a curriculum vitae developped with VueJs.
 
 ## Changing data
 
-**When I started to develop this CV, gitHub was a stranger for me.
-Changing the data could be difficult. 
-I will update my code to make it easier.**
+**I will update my code to make it easier.**
 
 - ### Update animation Word
+    go to the following file:
 
+>**..\src\components\navigation\BackgroundAnimation.vue** 
+>
+>and replace '---' with your own word
+>you can add other object in array with the same structure
+
+     `data(){
+        return{
+            data:[
+                {
+                    "darkWord":"---",
+                    "colorWord" :"---",
+                    "array":["---","---","----"]
+                },
+                {
+                    "darkWord":"j'aime",
+                    "colorWord" :"travailler avec",
+                    "array":["vuejs","nodejs","react",'html','css',"mongodb","sqlite"]
+                }
+            ]`
 
 - ### changing my profile picture
 
