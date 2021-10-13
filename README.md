@@ -32,12 +32,7 @@ This is a curriculum vitae developped with VueJs.
                     "darkWord":"---",
                     "colorWord" :"---",
                     "array":["---","---","----"]
-                },
-                {
-                    "darkWord":"j'aime",
-                    "colorWord" :"travailler avec",
-                    "array":["vuejs","nodejs","react",'html','css',"mongodb","sqlite"]
-                }
+                }...
             ]`
 
 - ### changing my profile picture

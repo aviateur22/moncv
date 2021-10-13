@@ -24,7 +24,7 @@
                   <Bubble :data="bubbleInformation"/>
               </div>
               
-              <img src='../assets/images/profile.png' alt="ma photo de profil" class="profil__img">              
+              <img src='../assets/images/github/avatar.png' alt="my beautiful picture" class="profil__img">              
               <div class="description__detail-container">
                   <h2 class="description__name"> <span class="description__name-category"> nom:  </span> Cyrille Cadé</h2>
                   <h2 class="description__name"> <span class="description__name-category">age:</span> 37 ans</h2>
