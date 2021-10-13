@@ -4,7 +4,7 @@
 
 This is a curriculum vitae developped with VueJs.
 
-![image extrait de mon CV](src\assets\images\banner.PNG "Titre, facultatif")
+![image extrait de mon CV](https://github.com/aviateur22/moncv/blob/master/src/assets/images/banner.PNG "Titre, facultatif")
 
 - ## Main feature
 ```
