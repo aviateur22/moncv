@@ -2,7 +2,7 @@
 node_modules
 /dist
 jsconfig.json
-/personnal/
+src/assets/images/personnal/**
 
 
 # local env files
