@@ -83,12 +83,12 @@ export default {
         async nextImg(imgDataArray){
             this.rightAnimationEffect();
             setTimeout(() => {     
-
+            this.imgId++
             this.imgId = this.imgId < imgDataArray.length ? this.imgId++ : 0;            
 
             this.resetAnimation();
 
-           }, 500);
+           }, 500);           
         },
 
         /**
@@ -99,7 +99,7 @@ export default {
             this.leftAnimationEffect();
 
             setTimeout(() => {  
-
+                this.imgId--;
                 this.imgId = this.imgId > 0 ? this.imgId-- : imgDataArray.length-1; 
 
                 this.resetAnimation();

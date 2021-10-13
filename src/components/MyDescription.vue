@@ -24,7 +24,7 @@
                   <Bubble :data="bubbleInformation"/>
               </div>
               
-              <img src='../assets/images/github/avatar.png' alt="my beautiful picture" class="profil__img">              
+              <img src='../assets/images/github/mypicture.png' alt="my beautiful picture" class="profil__img">              
               <div class="description__detail-container">
                   <h2 class="description__name"> <span class="description__name-category"> nom:  </span> Cyrille Cadé</h2>
                   <h2 class="description__name"> <span class="description__name-category">age:</span> 37 ans</h2>
@@ -149,6 +149,7 @@ export default {
         height: 150px;
         border: 3px solid gainsboro;
         border-radius: 100%;
+        object-fit: cover;
         
     }
     .description__detail-container{        

@@ -47,7 +47,7 @@ export default {
         updateWordArray(){
             const action = setInterval(()=>{    
                 
-                this.WordArrayActif=this.data[this.main_index].array[this.secondary_index]     ;
+                this.WordArrayActif=this.data[this.main_index].array[this.secondary_index];
                 this.secondary_index++;           
                 this.secondary_index = this.secondary_index < this.data[this.main_index].array.length ?  this.secondary_index++ : 0 ;
                 if(this.secondary_index===0){                  
