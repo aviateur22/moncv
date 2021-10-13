@@ -8,7 +8,7 @@ This is a curriculum vitae developped with VueJs.
 
 - ## Main feature
 ```
-Responsive for **ff**
+I just love **bold text**.
 You can present up to 4 projects
 display your profile picture
 Add your mail and telefon number
