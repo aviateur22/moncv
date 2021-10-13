@@ -144,6 +144,13 @@ export default {
         right:calc(0%);
     }
 
+    .profil__img{
+        width: 150px;
+        height: 150px;
+        border: 3px solid gainsboro;
+        border-radius: 100%;
+        
+    }
     .description__detail-container{        
         padding: 0px 20px;
     }

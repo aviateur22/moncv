@@ -72,7 +72,7 @@ export default {
     }
 
     .contact{
-        background-image: url('../assets/images/phone.svg');
+        background-image: url('../assets/images/github/phone.svg');
         background-repeat: no-repeat;
         background-size: 25%;
         background-position: 50%;
@@ -95,7 +95,7 @@ export default {
     }
 
     .contact--mail{
-        background-image: url('../assets/images/mail.svg');
+        background-image: url('../assets/images/github/mail.svg');
         background-color: rgba(158, 242, 255,0.8);
         text-shadow: 1px 1px 2px black;
     }

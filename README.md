@@ -21,9 +21,9 @@ This is a curriculum vitae developped with VueJs.
     go to the following file:
 
 >**..\src\components\navigation\BackgroundAnimation.vue** 
->
->and replace '---' with your own word
->you can add other object in array with the same structure
+
+>- replace '---' with your own word
+> - you can add other object in array with the same structure
 
      `data(){
         return{
@@ -36,10 +36,67 @@ This is a curriculum vitae developped with VueJs.
             ]`
 
 - ### changing my profile picture
+go to the following file:
+
+>**..src\components\MyDescription.vue** 
+
+> - find and replace '---' with your own URL picture
+>
+> - image have to be upload in github folder
+    
+    `<img src='---.png' alt="my beautiful picture" class="profil__img">`
+
+
+
 
 - ### updated project
 
+go to the following file:
+
+>**..src\components\Project.vue** 
+
+> - find and update the PROJECTS array with your own image name and information
+> - image have to be upload in github folder
+
+        `projects:[
+                        {
+                        id:0,
+                        date:'2015',
+                        name:"poject",
+                        technos:['C#','microsoft office'],
+                        imgs:[
+                                {
+                                    id:1,
+                                    imgName: 'name of the image.png',
+                                    alt:'--description of the image--' 
+                                },
+                                {
+                                    id:2,
+                                    imgName: 'name of the image.png',
+                                    alt:'--description of the image--' 
+                                }
+                            ],
+                        comments:[
+                            'Great job',
+                            'Hard time to complete this'
+                        ]
+                        }`
+
 - ### modified contact
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+go to the following file:
+
+>**C:\Programmation\moncv\src\components\Contact.vue**
+
+> - update the telefon number 
+> - update the email
+
+    `<div class="contact-container">
+          <section class="contact">
+                <h4><a href="tel:xx xx xx xx xx" class="contact__content">xx xx xx xx xx</a></h4>
+          <h5></h5>
+      </section>
+      <section class="contact contact--mail">            
+            <h4><a href="mailto:xxxxxxxx" class="contact__content contact__content--mail">xxxxxxxx</a></h4>
+      </section>
+    `

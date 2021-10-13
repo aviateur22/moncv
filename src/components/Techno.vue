@@ -13,7 +13,7 @@
                             <li><p class="article__list-item">nodejs</p></li>
                             <li><p class="article__list-item">api rest</p></li>
                         </ul>    
-                        <img src="../assets/images/database.png" alt="" class="article__img">
+                        <img src="../assets/images/github/database.png" alt="" class="article__img">
                     </main>
                     
                 </article>
@@ -32,7 +32,7 @@
                             <li><p class="article__list-item">html</p></li>
 
                         </ul>  
-                        <img src="../assets/images/computer.png" alt="" class="article__img">
+                        <img src="../assets/images/github/computer.png" alt="" class="article__img">
                     </main>
                     
                 </article>
@@ -49,7 +49,7 @@
                             <li><p class="article__list-item">g.a.s</p></li>
 
                         </ul>  
-                        <img src="../assets/images/other.png" alt="" class="article__img">
+                        <img src="../assets/images/github/other.png" alt="" class="article__img">
                     </main>
                     
                 </article>

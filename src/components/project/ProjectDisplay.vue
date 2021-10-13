@@ -4,7 +4,7 @@
                     
     <section class="presentation__img-container">  
         <!-- Image de présentation du projet -->
-        <img @click="displayInformation" ref="image" class="presentation__img" :src="this.getImg(this.project.imgs,this.imgId)" :alt="this.project.imgs[this.imgId].alt"> 
+        <img @click="displayInformation" ref="image" class="presentation__img" :src="this.getImg(this.project.imgs)" :alt="this.project.imgs[this.imgId].alt"> 
 
         <!-- button de défilement des image-->
         <button class="presentation__btn presentation--left" @click="previousImg(this.project.imgs,this.imgId)">&lt;</button>
@@ -64,13 +64,13 @@ export default {
         /**
          * Renvoie l'url de l'image utilisable par VUEJS
          */
-        getImg(imgDataArray, id){
+        getImg(imgDataArray){
 
             try{
-                return require('../../assets/images/'+ imgDataArray[id].url);
+                return require('../../assets/images/github/'+ imgDataArray[this.imgId].imgName);
             }
             catch(err){
-                console.log('url image:' + url)
+               
                 console.log(err)
             }
             
@@ -80,22 +80,13 @@ export default {
         /**
          * Passe à l'image suivante
          */
-        async nextImg(imgDataArray, id){
+        async nextImg(imgDataArray){
             this.rightAnimationEffect();
-            setTimeout(() => {  
+            setTimeout(() => {     
 
-                const count = this.imgId + 1;            
+            this.imgId = this.imgId < imgDataArray.length ? this.imgId++ : 0;            
 
-                if(count > imgDataArray.length-1){
-                    
-                    this.imgId = 0
-                }                  
-                else
-                {   
-                    this.imgId = count
-                }
-
-                 this.resetAnimation();
+            this.resetAnimation();
 
            }, 500);
         },
@@ -109,17 +100,7 @@ export default {
 
             setTimeout(() => {  
 
-                const count = this.imgId - 1; 
-
-
-                if(count < 0){
-                    
-                    this.imgId = imgDataArray.length-1
-                }                  
-                else
-                {   
-                    this.imgId = count
-                }
+                this.imgId = this.imgId > 0 ? this.imgId-- : imgDataArray.length-1; 
 
                 this.resetAnimation();
            }, 500);

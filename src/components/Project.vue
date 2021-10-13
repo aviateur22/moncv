@@ -38,86 +38,132 @@ export default {
     data(){
         return{            
             projects:[
-                    {
+                        {
                         id:0,
                         date:'2015',
-                        name:"easylux",
+                        name:"poject",
                         technos:['C#','microsoft office'],
                         imgs:[
-                            {
-                                id:1,
-                                url: 'easylux1-1.png',
-                                alt:'premiere photo de easylux v1' 
+                                {
+                                    id:1,
+                                    imgName: 'project.png',
+                                    alt:'my great project photo' 
                                 },
-                               {
-                                   id:2,
-                                   url: 'easylux1-2.png',
-                                   alt:'seconde photo de easylux v1' 
-                               }
-                        ],
+                                {
+                                    id:2,
+                                    imgName: 'project.png',
+                                    alt:'my great project photo' 
+                                }
+                            ],
                         comments:[
-                            'études problématiques dans notre travail',
-                            'proposition et conception d\'un logiciel sur mesure'
+                            'Great job',
+                            'Hard time to complete this'
                         ]
-                    },
-                    {
+                        },
+                        {
                         id:1,
                         date:'2018',
-                        name:"easylux v2",
-                        technos:['C# WPF' ,'requète API','sqlite'],
+                        name:"poject",
+                        technos:['C#','microsoft office'],
                         imgs:[
                                 {
                                     id:1,
-                                    url: 'easylux2-1.png',
-                                    alt:'premiere photo de easylux v2' 
-                                },
-                               {
-                                   id:2,
-                                   url: 'easylux2-1.png',
-                                   alt:'seconde photo de easylux v2' 
-                               }
-                            ],
-                        comments:['enquête sur les besoins d\'amélioration','etablissement cahier des charges','wireframe sur figma','integration de Bigmap']
-                    },
-                    {
-                        id:2,
-                        date:'2016',
-                        name:"notam manager v1",
-                        technos:[ 'C#','microsoft office','requète API'],
-                        imgs:[
-                                {
-                                    id:1,
-                                    url: 'notam1-1.png',
-                                    alt:'premiere photo de notam manager v1' 
+                                    imgName: 'project.png',
+                                    alt:'my great project photo' 
                                 },
                                 {
                                     id:2,
-                                   url: 'notam1-2.png',
-                                   alt:'seconde photo de notam manager v1' 
+                                    imgName: 'project.png',
+                                    alt:'my great project photo' 
                                 }
                             ],
-                        comments:['proposition logiciel pour suivre les notams d\'un aéroport','utilisation de la librairie GMAP',]
-                    },
-                    {
-                        id:3,
-                        date:'2020',
-                        name:"notam manager v2",
-                        technos:['Google Apps Script','javascript','requète API'],
-                        imgs:[
-                                {
-                                    id:1,
-                                    url: 'notam2-1.png',
-                                    alt:'premiere photo de notam manager v2' 
-                                },
-                                {
-                                    id:2,
-                                   url: 'notam2-2.png',
-                                   alt:'seconde photo de notam manager v2' 
-                                }
-                            ],
-                        comments:['proposition d\'une évolution suite a la disparaition de m.office','enquête sur les besoins','etablissement cahier des charges','wireframe et prototyping sur figma','connexion a google drive','gestion du responsive'],
-                    }
-                ],
+                        comments:[
+                            'Great job',
+                            'Hard time to complete this'
+                        ]
+                        }
+                    ],
+
+                    // {
+                    //     id:0,
+                    //     date:'2015',
+                    //     name:"easylux",
+                    //     technos:['C#','microsoft office'],
+                    //     imgs:[
+                    //         {
+                    //             id:1,
+                    //             imgName: 'easylux1-1.png',
+                    //             alt:'premiere photo de easylux v1' 
+                    //             },
+                    //            {
+                    //                id:2,
+                    //                imgName: 'easylux1-2.png',
+                    //                alt:'seconde photo de easylux v1' 
+                    //            }
+                    //     ],
+                    //     comments:[
+                    //         'études problématiques dans notre travail',
+                    //         'proposition et conception d\'un logiciel sur mesure'
+                    //     ]
+                    // },
+                    // {
+                    //     id:1,
+                    //     date:'2018',
+                    //     name:"easylux v2",
+                    //     technos:['C# WPF' ,'requète API','sqlite'],
+                    //     imgs:[
+                    //             {
+                    //                 id:1,
+                    //                 imgName: 'easylux2-1.png',
+                    //                 alt:'premiere photo de easylux v2' 
+                    //             },
+                    //            {
+                    //                id:2,
+                    //                imgName: 'easylux2-1.png',
+                    //                alt:'seconde photo de easylux v2' 
+                    //            }
+                    //         ],
+                    //     comments:['enquête sur les besoins d\'amélioration','etablissement cahier des charges','wireframe sur figma','integration de Bigmap']
+                    // },
+                    // {
+                    //     id:2,
+                    //     date:'2016',
+                    //     name:"notam manager v1",
+                    //     technos:[ 'C#','microsoft office','requète API'],
+                    //     imgs:[
+                    //             {
+                    //                 id:1,
+                    //                 imgName: 'notam1-1.png',
+                    //                 alt:'premiere photo de notam manager v1' 
+                    //             },
+                    //             {
+                    //                 id:2,
+                    //                imgName: 'notam1-2.png',
+                    //                alt:'seconde photo de notam manager v1' 
+                    //             }
+                    //         ],
+                    //     comments:['proposition logiciel pour suivre les notams d\'un aéroport','utilisation de la librairie GMAP',]
+                    // },
+                    // {
+                    //     id:3,
+                    //     date:'2020',
+                    //     name:"notam manager v2",
+                    //     technos:['Google Apps Script','javascript','requète API'],
+                    //     imgs:[
+                    //             {
+                    //                 id:1,
+                    //                 imgName: 'notam2-1.png',
+                    //                 alt:'premiere photo de notam manager v2' 
+                    //             },
+                    //             {
+                    //                 id:2,
+                    //                imgName: 'notam2-2.png',
+                    //                alt:'seconde photo de notam manager v2' 
+                    //             }
+                    //         ],
+                    //     comments:['proposition d\'une évolution suite a la disparaition de m.office','enquête sur les besoins','etablissement cahier des charges','wireframe et prototyping sur figma','connexion a google drive','gestion du responsive'],
+                    // }
+                
             display:false,
             project:null,
             projectParam:undefined,
@@ -137,18 +183,17 @@ export default {
          * Affichage du projet en détail
          */
         displayProject(project){
-
+         
             //Masque les information du projet
-            if(project.id===this.projectIdBackup){
-               
-                this.display=false;
-                this.projectIdBackup=undefined
+            if(project.id === this.projectIdBackup){
+                
+                // this.display=false;
+                this.toggleDisplay();
                 return;
             }
-
-            //Gestion de l'affichage via le WATCH               
-            this.project=project;
             
+            //Gestion de l'affichage via le WATCH               
+            this.project=project;            
             this.projectIdBackup=project.id;
         },
 
@@ -163,6 +208,15 @@ export default {
             
             this.previousElementClick = element
 
+        },
+
+        /**
+         * Permet d'afficher ou masquer lors d'un clique sur un meme projet 
+         * WATCH ne fonctionne pas dans le cas d'un meme projet
+         */
+        toggleDisplay(){
+
+            this.display= !this.display;
         }
     },
     watch:{
@@ -172,12 +226,13 @@ export default {
             {
                    this.$refs.projectDisplay.style.opacity = 0;
             }
-
+           
             setTimeout(()=>{
                 this.projectParam = this.project;
                 this.display=true;
+                
                 if(this.$refs.projectDisplay)
-                {
+                { 
                     this.$refs.projectDisplay.style.opacity = 1;
                 }
             },500)

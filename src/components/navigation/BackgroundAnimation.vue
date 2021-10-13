@@ -106,12 +106,13 @@ export default {
     }
     
 }
-.animation-container{
+.animation-container{    
     display: flex;
     justify-content: center;
     padding: 15px;    
     height: 150px;
     position: relative;
+    overflow: hidden;
     
 
 }

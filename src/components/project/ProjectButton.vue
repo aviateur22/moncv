@@ -24,7 +24,6 @@ export default {
     data(){
         return{
             previousElement:null,
-
         }
     },
     props:[
