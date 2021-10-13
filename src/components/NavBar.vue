@@ -1,7 +1,7 @@
 <template> 
  <!--animation -->
     <div class="animation">
-    <BackgroundAnimation/>
+        <BackgroundAnimation @updateTitle="this.updateTitle" />
     </div>  
     <div :class="{'header__navigation-container--hidden': !this.displayMenu}" class="container">
         
@@ -9,6 +9,10 @@
         <header class="header">      
                 
             <nav class="header__navbar">
+                <section class="header__title-container-new">
+                    <span ref="darkWord" class="dark--word">{{ this.copyDarkTitle }}</span>
+                    <span ref="colorWord" class="color--word"> {{ this.copyColorTitle}}</span>
+                </section>
                 <!-- zone de titre -->
                 <!-- <section class="header__title-container"> -->
                     <!-- titre -->
@@ -67,7 +71,19 @@ export default {
             displayMenu:true,
 
             /**Affichage overlay Mobile */
-            displayMobileOverlay:false
+            displayMobileOverlay:false,
+
+            /**Titre avec partie couleur gris */            
+            darkTitle:undefined,
+
+            /**Cpoy du titre avec partie couleur gris pour animer OPACITY*/            
+            copyDarkTitle:undefined,
+
+            /**Titre avec partie couleur bleu */            
+            colorTitle:undefined,
+
+            /**Cpoy du titre avec partie couleur bleu pour animer OPACITY*/            
+            copyColorTitle:undefined
             
         }
     },
@@ -144,10 +160,31 @@ export default {
              //this.setNavHeight("height:213px")
                this.height="height:213px"
             }
+        },
+
+        /** Reception des données du titre  */
+        updateTitle(data){                        
+            if(this.$refs.darkWord){
+                this.$refs.darkWord.style.opacity=0;
+                this.$refs.colorWord.style.opacity=0;
+            }
+            this.colorTitle = data.colorTitle;
+            this.darkTitle= data.darkTitle;            
         }
-    },    
+    },
+    
+    
     watch:{
-       
+
+        /**Mise a jour du titre */
+        darkTitle: function (){            
+             setTimeout(()=>{
+                    this.copyColorTitle = this.colorTitle;
+                    this.copyDarkTitle = this.darkTitle;                
+                    this.$refs.darkWord.style.opacity =1;
+                    this.$refs.colorWord.style.opacity =1;
+                },500)
+            }       
     },
     computed:{
         setNavHeight(){
@@ -195,7 +232,7 @@ export default {
         background-position: 10%, center, 90%;
         background-repeat: no-repeat; */
         background-size:90px;
-        background-color: rgba(90, 89, 89, 0.4);
+        background: linear-gradient(90deg, rgba(2,0,36,0.5) 0%, rgba(77,77,83,0.2) 57%, rgba(90,90,91,0.3) 100%);
         
     }
 
@@ -214,6 +251,30 @@ export default {
     .header__navbar{
         display: flex;
         flex-direction: column;
+    }
+
+    .header__title-container-new{
+        max-width: 100%;
+        text-align: center;        
+        font-size: var(--text_xxxxl);        
+        text-transform: uppercase;     
+        margin-top: 20px;  
+
+    }
+
+    .color--word{
+        color:var(--title_color);
+        font-weight: 900;
+        transition: all var(--time1) ease-in;
+
+    }
+
+    .dark--word{
+        font-weight: 900;
+        text-shadow: 0px 0px 1px  black;
+        color: rgb(160, 160, 160);
+        margin-right: 10px;
+        transition: all var(--time1) ease-in;
     }
 
     .header__title-container{

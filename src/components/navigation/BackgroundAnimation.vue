@@ -1,8 +1,8 @@
 <template>
   <div class="animation-container">
-       <span ref="darkWord" :data-color-word="this.WordArrayActif" class="dark__word">{{ this.copyDarkWord }}</span>
+       <span ref="darkWord" :data-color-word="this.WordArrayActif" class="dark__word"></span>
 
-       <span ref="colorWord" class="color__word">{{ this.copyColorWord}}</span>
+       <!-- <span ref="colorWord" class="color__word"></span> -->
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
             data:[
                 {
                     "darkWord":"je suis",
-                    "colorWord" :"développeur",
+                    "colorWord" :"futur développeur",
                     "array":["web","fullstack","javascript"]
                 },
                 {
@@ -23,10 +23,8 @@ export default {
                     "array":["vuejs","nodejs","react",'html','css',"mongodb","sqlite"]
                 }
             ],
-            darkWord:undefined,  
-            copyDarkWord:undefined,          
-            colorWord:undefined,
-            copyColorWord:undefined,
+            darkWord:null,              
+            colorWord:undefined,            
             WordArrayActif:undefined,
             main_index:0,
             secondary_index:0,
@@ -36,11 +34,14 @@ export default {
     methods:{
 
         init(){
-                this.darkWord = this.data[this.main_index].darkWord;
-                this.copyDarkWord = this.darkWord;                
-                this.colorWord = this.data[this.main_index].colorWord
-                this.copyColorWord =this.colorWord;
+                this.colorWord = this.data[this.main_index].colorWord;
+                this.darkWord = this.data[this.main_index].darkWord;              
+
+                /**Commence de defilement des mots */
                 this.updateWordArray();               
+
+                /**Initialisation du titre*/
+                this.updateTitle();
         },
 
         updateWordArray(){
@@ -52,37 +53,35 @@ export default {
                 if(this.secondary_index===0){                  
                     
                     setTimeout(()=>{      
-                        this.$refs.darkWord.style.opacity =0;
-                        this.$refs.colorWord.style.opacity =0;                
+                        
                         this.main_index++;
-                        this.main_index = this.main_index < this.data.length ?  this.main_index++ : 0  ;            
+                        this.main_index = this.main_index < this.data.length ?  this.main_index++ : 0; 
+                        this.colorWord = this.data[this.main_index].colorWord;           
                         this.darkWord = this.data[this.main_index].darkWord;
-                        this.colorWord = this.data[this.main_index].colorWord;
+                        
                     },this.timeAnimation-500)
                 }
+                
             }, this.timeAnimation)
+        },
+
+        /**Emit sur la parent pour Changer le titre principale */
+        updateTitle(){            
+            let titleData={
+                darkTitle : this.darkWord,
+                colorTitle : this.colorWord
+            }
+            
+            this.$emit('updateTitle',titleData)
         }
     },
     created(){
         this.init()
     },
     watch:{
-        /**Gestion de l'affichage d'un projet à l'autre */
+        /**update du titre dans le parent */
         darkWord: function (){
-            
-            if(this.$refs.darkWord){
-                
-                
-
-                setTimeout(()=>{
-                    this.copyDarkWord=this.darkWord;
-                    this.copyColorWord = this.colorWord;                    
-                    this.$refs.darkWord.style.opacity =1;
-                    this.$refs.colorWord.style.opacity =1;
-                },300)
-            }
-            
-          
+            this.updateTitle();
         }
     }
 
@@ -138,7 +137,7 @@ export default {
         text-align: center;     
         text-transform: uppercase;
         position: absolute;
-        top: 50px;        
+        top: 80px;        
         left:50%;
         transform: translateX(-50%); 
         font-size: 2.0em;
