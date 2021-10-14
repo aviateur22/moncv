@@ -9,7 +9,7 @@
         <header class="header">      
                 
             <nav class="header__navbar">
-                <section class="header__title-container-new">
+                <section class="header__title-container">
                     <span ref="darkWord" class="dark--word">{{ this.copyDarkTitle }}</span>
                     <span ref="colorWord" class="color--word"> {{ this.copyColorTitle}}</span>
                 </section>
@@ -94,6 +94,7 @@ export default {
     beforeUnmount(){
         /** getion du menu responsive*/
         window.removeEventListener('resize', this.checkScreen);
+
         /** getion du scroll pour le menu*/
         window.removeEventListener('scroll', this.onScroll);
 
@@ -104,7 +105,6 @@ export default {
        
         //Verification au chargement de la position du scroll et taille de l'écran
         this.checkScreen();
-        this.navHeight();
 
     },
     methods:{
@@ -132,6 +132,8 @@ export default {
             this.isMobileSize=false;
             this.mobileMenuHamburger=false;
         },
+
+        
         onScroll(){  
             // Position du scroll
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
@@ -147,20 +149,7 @@ export default {
             }            
             this.displayMenu = currentScrollPosition < this.lastScrollPosition;
             this.lastScrollPosition = currentScrollPosition;        
-        },
-        navHeight(){
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {                
-                // console.log('scroll > 80px');
-               this.height="height:100px"
-               //this.setNavHeight("height:100px")
-            }
-            else
-            {
-              //console.log('scroll < 80px');
-             //this.setNavHeight("height:213px")
-               this.height="height:213px"
-            }
-        },
+        },   
 
         /** Reception des données du titre  */
         updateTitle(data){                        
@@ -185,13 +174,6 @@ export default {
                     this.$refs.colorWord.style.opacity =1;
                 },500)
             }       
-    },
-    computed:{
-        setNavHeight(){
-            console.log(this.height);
-            return this.height
-        }
-     
     }
 }
 </script>
@@ -207,6 +189,11 @@ export default {
 
         .header__navigation-container{
             display: none !important;
+        }
+
+        .header__title-container{
+            font-size: var(--text_xl) !important;    
+
         }
 
         .header__title{                
@@ -253,7 +240,7 @@ export default {
         flex-direction: column;
     }
 
-    .header__title-container-new{
+    .header__title-container{
         max-width: 100%;
         text-align: center;        
         font-size: var(--text_xxxxl);        
@@ -275,12 +262,6 @@ export default {
         color: rgb(160, 160, 160);
         margin-right: 10px;
         transition: all var(--time1) ease-in;
-    }
-
-    .header__title-container{
-        display: flex;
-        justify-content: flex-start;
-
     }
 
     .header__title{        

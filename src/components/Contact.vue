@@ -1,5 +1,5 @@
 <template>
-  <div id="contact" class="container">
+  <div :class="{'show' : this.show}" id="contact" class="container">
       <h2 class="title">contact</h2>
 
       <p class="text"><span class="strong">Vous souhaitez me rencontrer</span>, je suis disponible sur Auterive et ses alentous</p>
@@ -18,7 +18,31 @@
 
 <script>
 export default {
-    name:'Contact'
+    name:'Contact',
+    mounted(){
+        window.addEventListener('scroll', this.onScroll)
+    },
+    data(){
+        return{
+            show:false
+        }
+    },
+    methods:{
+
+        /**Gestion du défilement de la souris */
+        onScroll(){
+             // Position du scroll
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+
+            // Affichage composant = 50px
+            if (currentScrollPosition > 1600) {
+                this.show = true;
+            
+            }
+            this.lastScrollPosition = currentScrollPosition;      
+
+        }
+    }
 }
 </script>
 
@@ -43,7 +67,15 @@ export default {
 }
     .container{
         margin-bottom: 40px;
+        transition: all var(--time2) cubic-bezier(0.39, 0.575, 0.565, 1);
+        opacity: 0;
     }
+
+    .show{
+      opacity: 1 !important; 
+      transform: translate3d(0, -10px, 0) !important;
+    }
+
     .title{
         text-transform: uppercase;
         font-weight: var(--text-bold);

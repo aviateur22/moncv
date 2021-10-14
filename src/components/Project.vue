@@ -1,5 +1,5 @@
 <template>
-  <div id="project" class="container">
+  <div :class="{'show':this.show}" id="project" class="container">
       <h2 class="title">projets</h2>
       
 
@@ -34,6 +34,9 @@ export default {
         ProjectButton,
         ProjectDisplay,
         Bubble
+    },
+     mounted(){
+        window.addEventListener('scroll', this.onScroll)
     },
     data(){
         return{            
@@ -187,7 +190,8 @@ export default {
             bubbleInformation:{
                 title:"Astuce",
                 text:"Cliquer sur un projet pour avoir plus de détail"
-            }
+            },
+            show:false
 
         }
     },
@@ -231,6 +235,20 @@ export default {
         toggleDisplay(){
 
             this.display= !this.display;
+        },
+
+        /**Gestion du défilement de la souris */
+        onScroll(){
+             // Position du scroll
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+
+            // Affichage composant = 50px
+            if (currentScrollPosition > 1250) {
+                this.show = true;
+            
+            }
+            this.lastScrollPosition = currentScrollPosition;        
+
         }
     },
     watch:{
@@ -291,8 +309,15 @@ export default {
     }
     .container{
         max-width: 1600px;
-        margin: 35px auto;        
+        margin: 35px auto;    
+        transition: all var(--time2) cubic-bezier(0.39, 0.575, 0.565, 1);
+        opacity: 0;    
         
+    }
+
+      .show{
+        opacity: 1 !important; 
+        transform: translate3d(0, -10px, 0) !important;
     }
 
     .project-container{

@@ -1,5 +1,5 @@
 <template>
-  <div id="techno" class="container">
+  <div :class="{'show':this.show}" id="techno" class="container">
       <h2 class="title">techno</h2>
         <div class="container-article">
             <section>
@@ -60,7 +60,30 @@
 
 <script>
 export default {
-    name:'Techno'
+    name:'Techno',
+     mounted(){
+        window.addEventListener('scroll', this.onScroll)
+    },
+    data(){
+        return{
+            show:false
+        }
+    },
+        methods:{
+
+        /**Gestion du défilement de la souris */
+        onScroll(){
+             // Position du scroll
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+
+            // Affichage élémént = 600px
+            if (currentScrollPosition > 700) {
+                this.show = true;            
+            }
+            this.lastScrollPosition = currentScrollPosition;        
+
+        }
+    },
 
 }
 </script>
@@ -84,6 +107,13 @@ export default {
         background-color: #F6F6F6;   
         margin-top: 40px;
         padding-bottom: 40px;
+        transition: all var(--time2) cubic-bezier(0.39, 0.575, 0.565, 1);
+        opacity: 0;
+    }
+
+    .show{
+        opacity: 1 !important; 
+        transform: translate3d(0, -10px, 0) !important;    
     }
 
     .title{

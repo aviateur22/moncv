@@ -11,6 +11,7 @@
 
     /* temps de transition */
     --time1 :.3s;
+    --time2 : 2s;
 
     /* title color */
     --title_color : #0057FF;
