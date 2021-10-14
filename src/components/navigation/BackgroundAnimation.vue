@@ -34,8 +34,13 @@ export default {
     methods:{
 
         init(){
+                /**Affichage du titre principal  */
                 this.colorWord = this.data[this.main_index].colorWord;
-                this.darkWord = this.data[this.main_index].darkWord;              
+                this.darkWord = this.data[this.main_index].darkWord;     
+
+                /** Initialise le défilement  des mots autour*/
+                this.WordArrayActif=this.data[this.main_index].array[this.secondary_index];
+                this.secondary_index++;            
 
                 /**Commence de defilement des mots */
                 this.updateWordArray();               

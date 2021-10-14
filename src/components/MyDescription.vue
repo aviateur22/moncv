@@ -5,14 +5,14 @@
       <section class="description__story">
          
             <p class="description__story-content">
-              Je suis autodidacte et pationné en développement Web et logiciel depuis quelques années. Aujourd'hui, je franchis le pas, je commence une reconversion professionnelle pour devenir développeur Web.  
+              Je suis autodidacte et pationné en développement Web et logiciel depuis quelques années. Aujourd'hui, je franchis le pas, en commençant une reconversion professionnelle pour devenir développeur Web.  
             </p>
             <p class="description__story-content">
               Mon travail actuel m'a permis d'acquérir autonomie et le goût d'être en équipe. 
-              Mes rèsponsables mon fait confiance et j'ai ainsi eu l'occasion de proposer, développer et de mettre en place certains logiciels.
+              Mes rèsponsables m'ont fait confiance et j'ai ainsi eu l'occasion de proposer, développer et de mettre en place certains logiciels.
             </p>
             <p class="description__story-content">
-              Je suis de nature curieux et j'aime apprendre. Mon défis actuel est l'apprentissage de VUEJS.         
+              Je suis de nature curieuse et j'aime apprendre. Mon défis actuel est l'apprentissage de VUEJS.         
             </p>
 
 
