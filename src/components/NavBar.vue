@@ -140,7 +140,7 @@ export default {
 
             // pour le mobile
             if (currentScrollPosition < 0) {
-            return
+                return
             }
 
             //offset pour activer la disparaition du menu
@@ -148,6 +148,11 @@ export default {
                 return
             }            
             this.displayMenu = currentScrollPosition < this.lastScrollPosition;
+
+            //Menu réduit si scroll > 120 px
+            if(currentScrollPosition > 120){
+                this.displayMenu=false;
+            }
             this.lastScrollPosition = currentScrollPosition;        
         },   
 
@@ -203,7 +208,7 @@ export default {
         .mobile {
             display: flex !important;
             position: absolute !important ;
-            top: 15px !important;
+            top: 67px !important;
             right: 0px !important
         }
     }
@@ -259,7 +264,7 @@ export default {
     .dark--word{
         font-weight: 900;
         text-shadow: 0px 0px 1px  black;
-        color: rgb(160, 160, 160);
+        color: rgb(255, 255, 255);
         margin-right: 10px;
         transition: all var(--time1) ease-in;
     }

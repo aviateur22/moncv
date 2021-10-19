@@ -35,7 +35,7 @@ export default {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
 
             // Affichage composant = 50px
-            if (currentScrollPosition > 1600) {
+            if (currentScrollPosition > 1500) {
                 this.show = true;
             
             }

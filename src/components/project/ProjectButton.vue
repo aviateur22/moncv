@@ -1,29 +1,54 @@
 <template>
    <!-- overlay de décoration -->
-   <div ref="project" class="project" @click="showPresentation">
-       <div class="project__overlay">project{{ project.id +1}}</div>    
+   <div class="main-project-container">
 
-        <!-- Nom du projet  -->
-        <div class="project__title-border">
-            <h2 class="project__title">                    
-                <span class="project__title-regular">projet:</span> {{ project.name}}
-            </h2>
-        </div>
+      <transition name="fade">
+          <div v-if="visibilityButton" @click="toggleVisibilityButton" ref="project" class="project"> <!-- @click="showPresentation" -->
+                <div class="project__overlay">project{{ project.id +1}}</div>    
+
+                <!-- Nom du projet  -->
+                <div class="project__title-border">
+                    <h2 class="project__title">                    
+                        <span class="project__title-regular">projet:</span> {{ project.name}}
+                    </h2>
+                </div>
+                
+                <!-- date de création -->
+                <p class="project__date">
+                    <span class="project__title-regular"> début: </span>  {{ project.date }}
+                </p>
+            </div>  
+      </transition>
+           
+    
         
-        <!-- date de création -->
-        <p class="project__date">
-            <span class="project__title-regular"> début: </span>  {{ project.date }}
-        </p>
-   </div>  
+        <transition name="bounce">
+            <div v-if="this.visibilityProject" @click="toggleVisibilityProject" class="detail__project">
+                <h2>Affichage detail du projet</h2>
+                <ProjectDisplay :project="this.project"/>
+            </div>
+        </transition>
+
+      
+   </div>
+
+   
     
 </template>
 
 <script>
+import ProjectDisplay from './ProjectDisplay.vue'
 export default {
+    components:{
+        ProjectDisplay
+    },
     name:'ProjectButton',
     data(){
         return{
             previousElement:null,
+            visibilityButton:true,
+            visibilityProject:false,
+            transitionTime:1000
         }
     },
     props:[
@@ -38,13 +63,104 @@ export default {
 
             //reset du bouton cliqué précedemment
             this.$emit('reset-color',this.$refs.project)
+
+            
+        },
+
+        toggleVisibilityButton(){
+            //toggle Visibility
+            this.visibilityButton = !this.visibilityButton;
+            
+        },
+
+        toggleVisibilityProject(){
+        //toggle Visibility
+        this.visibilityProject = !this.visibilityProject;
+        
         }
     },
+    watch: {
+
+        /**
+         * Modification parametre de visibilité
+         */
+        visibilityButton: function (newState, oldState){
+            
+            if(oldState === true){
+                setTimeout(()=>{
+
+                this.visibilityProject = !this.visibilityProject;
+
+                },this.transitionTime)
+            }
+        },
+
+         visibilityProject: function (newState, oldState){
+
+             if(oldState === true){
+                setTimeout(()=>{
+
+                    this.visibilityButton = !this.visibilityButton;
+
+                },this.transitionTime)
+             }
+             
+         }
+
+             
+    }
 
 }
 </script>
 
 <style scoped>
+
+    .bounce-enter-active {
+        animation: bounce-in 1s;
+    }
+
+    .bounce-leave-active {
+        animation: bounce-in 1s reverse;
+    }
+
+    @keyframes bounce-in { 
+        
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+        /* 50% {
+            opacity: 0.5;
+            transform: scale(1.5);
+        } */
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .fade-enter-active {
+        animation: fade-in 1s;
+    }
+
+    .fade-leave-active {
+        animation: fade-in 1s reverse;
+    }
+
+    @keyframes fade-in { 
+        
+        0% {
+           opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .main-project-container{
+    }
+
  .project{
         margin: 15px 5px;
         position: relative;
