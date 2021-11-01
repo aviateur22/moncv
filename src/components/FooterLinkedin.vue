@@ -1,16 +1,18 @@
 <template>
   <div class="container">
       <footer class="footer">
-          <h2><a href="https://www.linkedin.com/in/cyrille-cade-b58323206/" target="_blank" class="footer__link"> In </a></h2>
+          <h2><a  :href="this.footerData.link" target="_blank" class="footer__link"> In </a></h2>
           <br>
-          <p class="footer__name">Cyrille Cadé &#169; 2021 </p>
+          <p class="footer__name">{{ this.footerData.footerName }} &#169; {{ this.footerData.footerYear }}</p>
       </footer>
     </div>
 </template>
 
 <script>
 export default {
-    name:'FooterLinkedin'
+    name:'FooterLinkedin',
+    props:['footerData'],
+    
 
 }
 </script>

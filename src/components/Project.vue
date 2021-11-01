@@ -25,8 +25,7 @@ export default {
         Bubble
     },
      mounted(){
-        window.addEventListener('scroll', this.onScroll);   
-        console.log(this.projects)     
+        window.addEventListener('scroll', this.onScroll);          
     },
     data(){
         return{                        

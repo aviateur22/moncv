@@ -6,11 +6,11 @@
       <p class="text space">A bientôt </p>
       <div class="contact-container">
           <section class="contact">
-                <h4><a href="tel:0623274101" class="contact__content">06 23 27 41 01</a></h4>
+                <h4><a :href="`tel:${this.contact.phone}`" class="contact__content">{{ this.contact.phone}}</a></h4>
           <h5></h5>
       </section>
       <section class="contact contact--mail">            
-            <h4><a href="mailto:aviateur22@hotmail.fr" class="contact__content contact__content--mail">aviateur22@hotmail.fr</a></h4>
+            <h4><a :href="`mailto:${this.contact.mail}`" class="contact__content contact__content--mail"> {{ this.contact.mail }}</a></h4>
       </section>
       </div>      
   </div>
@@ -22,6 +22,7 @@ export default {
     mounted(){
         window.addEventListener('scroll', this.onScroll)
     },
+    props:['contact'],
     data(){
         return{
             show:false

@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <Navigation/>
-    <MyDescription/>
-    <ProfessionnalExperience/>
+    <MyDescription :myDescription="myDescription"/>
+    <ProfessionnalExperience :experiences="experiences"/>
     <Techno/>
     <Project :projects="projects"/>
-    <Contact/>
-    <FooterLinkedin/>
+    <Contact :contact="contact"/>
+    <FooterLinkedin :footerData="footerData"/>
   </div>
   
 </template>
@@ -34,6 +34,66 @@ export default {
   }, 
   data(){
     return{
+
+      /**
+       * Ma présentation
+       */
+      myDescription:{
+        /**My presentation */
+        presentationItem1:'Je suis autodidacte et pationné en développement Web et logiciel depuis quelques années. Aujourd\'hui, je franchis le pas, en commençant une reconversion professionnelle pour devenir développeur Web.  ',
+        presentationItem2:'Mon travail actuel m\'a permis d\'acquérir autonomie et le goût d\'être en équipe.\n Mes rèsponsables m\'ont fait confiance et j\'ai ainsi eu l\'occasion de proposer, développer et de mettre en place certains logiciels.',
+        presentationItem3: 'Je suis de nature curieuse et j\'aime apprendre. Mon défis actuel est l\'apprentissage de VUEJS.',
+
+        /**Name and First name */
+        name:'Cyrille',
+        lastName:'Cadé',
+
+        /**date of birth */
+        birthday:{
+          day:26,
+          month:12,
+          year:1983
+        },
+
+        /**Adress */
+        city:'Auterive',
+        zipCode:'31190',
+
+        /**Picture */
+        myPictureName:'myPicture',
+      },
+
+      /**
+       * Mon experience - mon parcours
+       */
+       experiences:[
+                {
+                    title:"reconversion professionnelle",
+                    date:"aujourd'hui à 2021",
+                    subTitle:"",
+                    items:[
+                      'HTML/CSS/Javascript',
+'                      React & NodeJS',
+                      'modélisation et implémentation de base de données',
+                      'Gestion de projet avec la méthodologie AGILE',
+                      'Déploiement sur serveur',
+                      'réalisation complète d’une application WEB  ',
+                    ]
+                },
+                {
+                    title:"autodidacte",
+                    date:"2021 à 2013",
+                    subTitle:"Pationné par le développement WEB et logiciel:",
+                    items:[
+                        'Apprentissage de diffrents languages de programmation',
+                        'Création d\'applications personnelles',
+                        'Test de wireframe et prototype sur figma',
+                        'ébauche de projet pour la famille',
+                        'développement d\'application pour mon travail'
+                    ]
+
+                }
+            ],
       /**
        * Data pour les présentations de projet
        */
@@ -134,6 +194,27 @@ export default {
                         comments:['proposition d\'une évolution suite a la disparaition de m.office','enquête sur les besoins','etablissement cahier des charges','wireframe et prototyping sur figma','connexion a google drive','gestion du responsive'],
                     }
             ],
+      
+      /**
+       * Contact mail et phone
+       */
+      contact:{
+        mail:'avaiateur22@hotmail.fr',
+        phone: '06 23 27 41 01'
+      },
+
+      /**
+       * data footer
+       */
+      footerData:{
+        link:'https://www.linkedin.com/in/cyrille-cade-b58323206/',
+        footerName: `Cyrille Cadé`,
+        footerYear : new Date().getFullYear(),
+      },
+      
+      /**
+       *
+       */
     }
   },
  

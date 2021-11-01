@@ -6,10 +6,11 @@
           <article class="article">
               <!-- conteneur date et echelle -->
               <header class="article__header">
-                    <h3 class="article__header-title"> {{ experience.date }}</h3>  
+                    <h3 class="article__header-title"> {{ experience.date }}</h3>                     
               </header>
               <main class="article__content">
                   <h2 class="article__content-title"> {{ experience.title }} </h2>
+                  <h4 class="article__content-subTitle"> {{ experience.subTitle}} </h4>
                   <h2 class="article__content-date mobile"> {{ experience.date }}</h2>
                   <h2 class="article__content-date">{{ experience.subTitle }}</h2>                  
                   <ul v-for="(item,id) in experience.items" :key="id" class="article__list">
@@ -106,7 +107,6 @@ export default {
         padding: 0px 20px;
         width: 100px;
         color: var(--date_color);
-
     }
 
     .article__content{
@@ -138,6 +138,11 @@ export default {
     .article__content-title{
         text-transform: uppercase;
         font-weight: var(--text-bolder);
+        padding: 20px 5px;
+        /* display: inline-block; */
+    }
+
+    .article__content-subTitle{
         padding: 20px 5px;
         /* display: inline-block; */
     }

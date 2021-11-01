@@ -5,14 +5,13 @@
       <section class="description__story">
          
             <p class="description__story-content">
-              Je suis autodidacte et pationné en développement Web et logiciel depuis quelques années. Aujourd'hui, je franchis le pas, en commençant une reconversion professionnelle pour devenir développeur Web.  
+                {{ this.myDescription.presentationItem1 }}
             </p>
             <p class="description__story-content">
-              Mon travail actuel m'a permis d'acquérir autonomie et le goût d'être en équipe. 
-              Mes rèsponsables m'ont fait confiance et j'ai ainsi eu l'occasion de proposer, développer et de mettre en place certains logiciels.
+                {{ this.myDescription.presentationItem2 }}
             </p>
             <p class="description__story-content">
-              Je suis de nature curieuse et j'aime apprendre. Mon défis actuel est l'apprentissage de VUEJS.         
+                {{ this.myDescription.presentationItem3 }}
             </p>
 
 
@@ -26,9 +25,9 @@
               
               <img src='../assets/images/github/mypicture.png' alt="my beautiful picture" class="profil__img">              
               <div class="description__detail-container">
-                  <h2 class="description__name"> <span class="description__name-category"> nom:  </span> Cyrille Cadé</h2>
-                  <h2 class="description__name"> <span class="description__name-category">age:</span> 37 ans</h2>
-                  <h2 class="description__name"> <span class="description__name-category" >ville:</span> Auterive 31190</h2>                  
+                  <h2 class="description__name"> <span class="description__name-category"> nom:  </span> {{ this.myDescription.name }} {{ this.myDescription.lastName }} </h2>
+                  <h2 class="description__name"> <span class="description__name-category">age:</span> {{ this.myCalculatedAge }} ans</h2>
+                  <h2 class="description__name"> <span class="description__name-category" >ville:</span>  {{ this.myDescription.city }}  {{ this.myDescription.zipCode }} </h2>                  
               </div>
 
           </div>
@@ -46,13 +45,60 @@ export default {
     components:{
         Bubble
     },
+    props:['myDescription'],
     data(){
         return{
+            myCalculatedAge: -1,
             bubbleInformation:{
                 title:"Ma situation personnelle",
                 text:"je suis en couple, avec 2 enfants"
             }
         }
+    },
+    methods:{
+        /**
+         * Renvoie l'url de l'image utilisable par VUEJS
+         */
+        getImg(imgDataArray,img = this.imgId1){
+
+            try{
+                return require('../assets/images/github/'+ imgDataArray[img].imgName);
+            }
+            catch(err){
+               
+                console.log(err)
+            }
+        },        
+
+        /**
+         * Calcul de l'age a partir de la date de naissance
+         */
+        getAge(){
+
+           /* Element de naissance */ 
+           const year =  this.myDescription.birthday.year;
+           const month = this.myDescription.birthday.month;
+           const day = this.myDescription.birthday.day;
+
+            //Convertion en date
+           const birthday = new Date(year,month,day);
+
+           //Calcul de l'age
+           this.myCalculatedAge = this.calculate_age(birthday);           
+
+        },
+
+        /**
+         * 
+         */
+        calculate_age(birthday) { 
+            var diff = Date.now() - birthday.getTime();
+            var age_dt = new Date(diff);        
+            return Math.abs(age_dt.getUTCFullYear() - 1970);
+        }
+    },
+    mounted(){
+        this.getAge();
     }
 }
 </script>

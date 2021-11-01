@@ -22,37 +22,9 @@ export default {
     mounted(){
         window.addEventListener('scroll', this.onScroll)
     },
+    props:['experiences'],
     data(){
-        return{
-            experiences:[
-                {
-                    title:"reconversion professionnelle",
-                    date:"aujourd'hui à 2021",
-                    subTitle:"",
-                    items:[
-                      'HTML/CSS/Javascript',
-'                      React & NodeJS',
-                      'modélisation et implémentation de base de données',
-                      'Gestion de projet avec la méthodologie AGILE',
-                      'Déploiement sur serveur',
-                      'réalisation complète d’une application WEB  ',
-                    ]
-                },
-                {
-                    title:"autodidacte",
-                    date:"2021 à 2013",
-                    subTitle:"Pationné par le développement WEB et logiciel:",
-                    items:[
-                        'Apprentissage de diffrents languages de programmation',
-                        'Apprentissage de diffrents languages de programmation',
-                        'Création d\'applications personnelles',
-                        'Test de wireframe et prototype sur figma',
-                        'ébauche de projet pour la famille',
-                        'développement d\'application pour mon travail'
-                    ]
-
-                }
-            ],
+        return{           
             show : false,
         }
     },
