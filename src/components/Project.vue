@@ -3,190 +3,34 @@
       <h2 class="title">projets</h2>
       
 
-      <div class="project-container">
-         <!-- info bulle -->
-       <div class="profil__bubble">
-            <Bubble :data="bubbleInformation"/>
+        <div class="project-container">
+            <!-- info bulle -->
+            <div class="profil__bubble">
+                <Bubble :data="bubbleInformation"/>
+            </div>           
+            <!-- Affichage des projets -->
+            <ProjectDisplay :project="project" v-for="(project,id) in projects" :key="id"/>  
         </div>
-           <ProjectButton ref="projects" v-for="(project,id) in projects" :project="project" @reset-color="resetColor" @display-project="displayProject"  :key="id"/>  
-              
-            
-      </div>
-
-    <transition name="fade">
-        <div ref="projectDisplay"  v-if="this.display" class="project-display">
-            <ProjectDisplay :project="this.projectParam"/>            
-        </div>
-    </transition>
-   
-
-
   </div>
 </template>
 
 <script>
-import ProjectButton from './project/ProjectButton.vue';
 import ProjectDisplay from './project/ProjectDisplay.vue';
 import Bubble from './bubble/InformationBubble.vue'
 export default {
     name:'Project',
+    props:['projects'],
     components:{
-        ProjectButton,
         ProjectDisplay,
         Bubble
     },
      mounted(){
-        window.addEventListener('scroll', this.onScroll)
+        window.addEventListener('scroll', this.onScroll);   
+        console.log(this.projects)     
     },
     data(){
-        return{            
-            projects:[
-                    //     {
-                    //     id:0,
-                    //     date:'2015',
-                    //     name:"poject",
-                    //     technos:['C#','microsoft office'],
-                    //     imgs:[
-                    //             {
-                    //                 id:1,
-                    //                 imgName: 'project.png',
-                    //                 alt:'my great project photo' 
-                    //             },
-                    //             {
-                    //                 id:2,
-                    //                 imgName: 'project.png',
-                    //                 alt:'my great project photo' 
-                    //             }
-                    //         ],
-                    //     comments:[
-                    //         'Great job',
-                    //         'Hard time to complete this'
-                    //     ]
-                    //     },
-                    //     {
-                    //     id:1,
-                    //     date:'2018',
-                    //     name:"poject",
-                    //     technos:['C#','microsoft office'],
-                    //     imgs:[
-                    //             {
-                    //                 id:1,
-                    //                 imgName: 'project.png',
-                    //                 alt:'my great project photo' 
-                    //             },
-                    //             {
-                    //                 id:2,
-                    //                 imgName: 'project.png',
-                    //                 alt:'my great project photo' 
-                    //             }
-                    //         ],
-                    //     comments:[
-                    //         'Great job',
-                    //         'Hard time to complete this'
-                    //     ]
-                    //     }
-                    // ],
+        return{                        
 
-                    {
-                        id:0,
-                        date:'2015',
-                        name:"easylux",
-                        technos:['C#','microsoft office'],
-                        imgs:[
-                            {
-                                id:1,
-                                imgName: 'projet1-1.png',
-                                alt:'premiere photo de easylux v1' 
-                                },
-                               {
-                                   id:2,
-                                   imgName: 'projet1-2.png',
-                                   alt:'seconde photo de easylux v1' 
-                               }
-                        ],
-                        comments:[
-                            'études problématiques dans notre travail',
-                            'proposition et conception d\'un logiciel sur mesure'
-                        ]
-                    },
-                     {
-                        id:2,
-                        date:'2016',
-                        name:"notam manager v1",
-                        technos:[ 'C#','microsoft office','requète API'],
-                        imgs:[
-                                {
-                                    id:1,
-                                    imgName: 'projet2-1.png',
-                                    alt:'premiere photo de notam manager v1' 
-                                },
-                                {
-                                    id:2,
-                                   imgName: 'projet2-2.png',
-                                   alt:'seconde photo de notam manager v1' 
-                                }
-                            ],
-                        comments:['proposition logiciel pour suivre les notams d\'un aéroport','utilisation de la librairie GMAP',]
-                    },
-                    {
-                        id:1,
-                        date:'2018',
-                        name:"easylux v2",
-                        technos:['C# WPF' ,'requète API','sqlite'],
-                        imgs:[
-                                {
-                                    id:1,
-                                    imgName: 'projet3-1.png',
-                                    alt:'premiere photo de easylux v2' 
-                                },
-                               {
-                                   id:2,
-                                   imgName: 'projet3-2.png',
-                                   alt:'seconde photo de easylux v2' 
-                               },
-                               {
-                                    id:3,
-                                    imgName: 'projet3-3.png',
-                                    alt:'troisieme photo de easylux v2' 
-                                },
-                               {
-                                   id:4,
-                                   imgName: 'projet3-4.png',
-                                   alt:'quatrieme photo de easylux v2' 
-                               }
-                            ],
-                        comments:['enquête sur les besoins d\'amélioration','etablissement cahier des charges','wireframe sur figma','integration de Bigmap']
-                    },                   
-                    {
-                        id:3,
-                        date:'2020',
-                        name:"notam manager v2",
-                        technos:['Google Apps Script','javascript','requète API'],
-                        imgs:[
-                                {
-                                    id:1,
-                                    imgName: 'projet4-1.png',
-                                    alt:'premiere photo de notam manager v2' 
-                                },
-                                {
-                                    id:2,
-                                   imgName: 'projet4-2.png',
-                                   alt:'seconde photo de notam manager v2' 
-                                },
-                                {
-                                    id:3,
-                                   imgName: 'projet4-3.png',
-                                   alt:'troisieme photo de notam manager v2' 
-                                }
-                            ],
-                        comments:['proposition d\'une évolution suite a la disparaition de m.office','enquête sur les besoins','etablissement cahier des charges','wireframe et prototyping sur figma','connexion a google drive','gestion du responsive'],
-                    }
-            ],
-            display:false,
-            project:null,
-            projectParam:undefined,
-            projectIdBackup:undefined,            
-            previousElementClick:null,
             bubbleInformation:{
                 title:"Astuce",
                 text:"Cliquer sur un projet pour avoir plus de détail"
@@ -196,46 +40,6 @@ export default {
         }
     },
     methods:{
-
-        /**
-         * Affichage du projet en détail
-         */
-        displayProject(project){
-         
-            //Masque les information du projet
-            if(project.id === this.projectIdBackup){
-                
-                // this.display=false;
-                this.toggleDisplay();
-                return;
-            }
-            
-            //Gestion de l'affichage via le WATCH               
-            this.project=project;            
-            this.projectIdBackup=project.id;
-        },
-
-        /**
-         * Reset de la couleur des boutons projets au click
-         */
-        resetColor(element){
-            if(this.previousElementClick && element != this.previousElementClick){
-
-                this.previousElementClick.style.backgroundColor = 'transparent'
-            }
-            
-            this.previousElementClick = element
-
-        },
-
-        /**
-         * Permet d'afficher ou masquer lors d'un clique sur un meme projet 
-         * WATCH ne fonctionne pas dans le cas d'un meme projet
-         */
-        toggleDisplay(){
-
-            this.display= !this.display;
-        },
 
         /**Gestion du défilement de la souris */
         onScroll(){
@@ -252,26 +56,7 @@ export default {
         }
     },
     watch:{
-        /**Gestion de l'affichage d'un projet à l'autre */
-        project: function (){
-            if(this.$refs.projectDisplay)
-            {
-                   this.$refs.projectDisplay.style.opacity = 0;
-            }
-           
-            setTimeout(()=>{
-                this.projectParam = this.project;
-                this.display=true;
-                
-                if(this.$refs.projectDisplay)
-                { 
-                    this.$refs.projectDisplay.style.opacity = 1;
-                }
-            },500)
-              
 
-            
-        }
 
     }
     
