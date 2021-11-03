@@ -49,7 +49,7 @@ export default {
     props:['project'],
     data(){
         return{
-            imgId1 : 0,
+            imgId1 :0,
             imgId2 :1
         }
     },

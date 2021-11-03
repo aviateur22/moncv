@@ -3,7 +3,7 @@
     <Navigation/>
     <MyDescription :myDescription="myDescription"/>
     <ProfessionnalExperience :experiences="experiences"/>
-    <Techno/>
+    <Techno :technos="technos"/>
     <Project :projects="projects"/>
     <Contact :contact="contact"/>
     <FooterLinkedin :footerData="footerData"/>
@@ -66,7 +66,7 @@ export default {
       /**
        * Mon experience - mon parcours
        */
-       experiences:[
+      experiences:[
                 {
                     title:"reconversion professionnelle",
                     date:"aujourd'hui à 2021",
@@ -93,12 +93,32 @@ export default {
                     ]
 
                 }
-            ],
-      /**
-       * Data pour les présentations de projet
-       */
+      ],
+      
+      /**Mes technos */
+      technos:[
+        {
+          title:'back-end',
+          image:'database.png',
+          items:['c#','nodejs','api rest']
+        },
+        {
+          title:'front-end',
+          image:'computer.png',
+          items:['javascscript','vuejs','bootstrap','css','html']
+        },
+        {
+          title:'autres',
+          image:'other.png',
+          items:['vb','vba','g.a.s']
+        }
+        
+      ],
 
-     projects:[
+      /**
+       * présentations des projets 
+       */
+      projects:[
                     {
                         id:0,
                         date:'2015',
@@ -193,7 +213,7 @@ export default {
                             ],
                         comments:['proposition d\'une évolution suite a la disparaition de m.office','enquête sur les besoins','etablissement cahier des charges','wireframe et prototyping sur figma','connexion a google drive','gestion du responsive'],
                     }
-            ],
+      ],
       
       /**
        * Contact mail et phone
@@ -210,11 +230,7 @@ export default {
         link:'https://www.linkedin.com/in/cyrille-cade-b58323206/',
         footerName: `Cyrille Cadé`,
         footerYear : new Date().getFullYear(),
-      },
-      
-      /**
-       *
-       */
+      }
     }
   },
  

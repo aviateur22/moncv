@@ -2,7 +2,10 @@
   <div :class="{'show':this.show}" id="techno" class="container">
       <h2 class="title">techno</h2>
         <div class="container-article">
-            <section>
+            <section v-for="( techno, id ) in technos" :key="id">
+                <TechnoDisplay :techno="techno"/>
+            </section>
+            <!-- <section>
                 <article class="article">
                     <header class="article__title">
                             <h2 class="article__title-content">back-end</h2>
@@ -53,36 +56,42 @@
                     </main>
                     
                 </article>
-            </section>
+            </section> -->
         </div>      
   </div>
 </template>
 
 <script>
+import TechnoDisplay from './techno/TechnoDisplay.vue';
 export default {
     name:'Techno',
+    components:{
+        TechnoDisplay
+    },
      mounted(){
-        window.addEventListener('scroll', this.onScroll)
+        window.addEventListener('scroll', this.onScroll)       
     },
     data(){
         return{
             show:false
         }
     },
-        methods:{
+    props:['technos'],
+    methods:{
 
-        /**Gestion du défilement de la souris */
-        onScroll(){
-             // Position du scroll
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+    /**Gestion du défilement de la souris */
+    onScroll(){
+            // Position du scroll
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
 
-            // Affichage élémént = 600px
-            if (currentScrollPosition > 700) {
-                this.show = true;            
-            }
-            this.lastScrollPosition = currentScrollPosition;        
-
+        // Affichage élémént = 600px
+        if (currentScrollPosition > 700) {
+            this.show = true;            
         }
+        this.lastScrollPosition = currentScrollPosition;        
+
+    },
+        
     },
 
 }
@@ -98,87 +107,38 @@ export default {
         
     }
 
-    .article{
-       margin: 10px 0px !important;
-    }
+ 
 }
 
-    .container{
-        background-color: #F6F6F6;   
-        margin-top: 40px;
-        padding-bottom: 40px;
-        transition: all var(--time2) cubic-bezier(0.39, 0.575, 0.565, 1);
-        opacity: 0;
-    }
+.container{
+    background-color: #F6F6F6;   
+    margin-top: 40px;
+    padding-bottom: 40px;
+    transition: all var(--time2) cubic-bezier(0.39, 0.575, 0.565, 1);
+    opacity: 0;
+}
 
-    .show{
-        opacity: 1 !important; 
-        transform: translate3d(0, -10px, 0) !important;    
-    }
+.container-article{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin:0px auto;
+}
 
-    .title{
-        text-transform: uppercase;
-        font-weight: var(--text-bold);
-        font-size: var(--text_xxl);
-        color: var(--title_color);
-        padding: 25px 0px;
-        text-align: center;
-    }
+.title{
+    text-transform: uppercase;
+    font-weight: var(--text-bold);
+    font-size: var(--text_xxl);
+    color: var(--title_color);
+    padding: 25px 0px;
+    text-align: center;
+}
 
-    .container-article{
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin:0px auto;
-    }
 
-    .article{
-        display: flex;
-        flex-direction: column;
-        width: 210px;
-        border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        padding: 0px 20px;
-        height: 220px;
-        background-color: #ffffff;
 
-    }
-
-    .article__title{
-        text-transform: uppercase;
-        font-weight: var(--text-bolder);
-        padding: 20px 5px;
-
-    }
-
-    .article__content{
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-
-    }
-
-    .article__img{
-        order: 1;
-        max-width: 30px;
-    }
-
-    
-    .article__list{
-        order: 2;
-        padding-left: 20px;
-        list-style: disc;
-        list-style-position: inside;
-        width: 100%;
-       
-    }
-
-    .article__list-item{
-        font-size: var(--text_l);
-        text-transform: uppercase;
-        line-height: 2;
-        display: inline-block;
-    }
-
+.show{
+    opacity: 1 !important; 
+    transform: translate3d(0, -10px, 0) !important;    
+}    
 </style>
